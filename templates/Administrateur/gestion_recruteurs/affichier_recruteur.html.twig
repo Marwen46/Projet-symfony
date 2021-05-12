@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher Recruteur{% endblock %}
+
+{% block body %}
+   <div class="container">
+        <h1 class="my-3">Details recruteur : </h1>
+        <dl class="row">
+      <dt class="col-sm-3">ID : </dt>
+      <dd class="col-sm-9"></span>{{recruteur.id}}</dd>
+      <dt class="col-sm-3">Agence : </dt>
+      <dd class="col-sm-9"></span>{{recruteur.Nom}}</dd>
+      <dt class="col-sm-3">Adresse : </dt>
+      <dd class="col-sm-9"></span>{{recruteur.Adresse}}</dd>
+      <dt class="col-sm-3">Téléphone : </dt>
+      <dd class="col-sm-9"></span>{{recruteur.Telephone}}</dd>
+    </dl>
+    <div class="d-flex">
+          <a href="{{ path('admin-dashboard')}}" class="btn btn-primary btn-sm mt-3">retour</a>
+      <div>
+   </div>
+{% endblock %}

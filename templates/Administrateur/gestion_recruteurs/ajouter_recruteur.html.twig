@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %} {% block title %}Ajouter recruteur {%
+endblock %} {% block body %}
+<div class="container">
+  <h1 class="mt-4 ml-2">Ajouter un nouveau recruteur :</h1>
+  {{ form_start(form) }}
+  <div class="col-6">{{ form_row(form.Nom) }}</div>
+  <div class="col-6">{{ form_row(form.Adresse) }}</div>
+  <div class="col-6">{{ form_row(form.Telephone) }}</div>
+  {{ form_widget(form) }}
+  <button class="ml-3 btn btn-primary mb-3">Ajouter</button>
+  {{ form_end(form) }}
+</div>
+{% endblock %}
