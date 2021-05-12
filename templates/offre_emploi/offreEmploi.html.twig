@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offre Emploi{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 2px; }
+</style>
+
+<div>
+
+      <div class="container">
+  <h2 class="my-5 font-weight-bold" >Listes des offres d'emplois :</h2>
+  <a href="{{ path('ajouter_offre') }}" class="btn btn-link">ajouter une offre</a>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Description </th>
+                <th scope="col">Experience</th>
+                <th scope="col">Emplacement</th>
+                <th scope="col text-nowrap">Type de Contrat</th>
+                <th scope="col text-nowrap">Date D'expiration</th>
+                <th scope="col text-nowrap">Date D'ajout</th>
+                <th scope="col ">Etat</th>
+                <th scope="col ">Action</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            {% for o in offres %}
+            <tr>
+                <td class="text-nowrap">{{o.id}}</td>
+                <td class="text-nowrap">{{o.Titre}}</td>
+                <td class="text-nowrap">{{o.Description}}</td>
+                <td class="text-nowrap">{{o.Experience}}</td>
+                <td class="text-nowrap">{{o.Emplacement}}</td>
+                <td class="text-nowrap">{{o.TypeContrat}}</td>
+                <td class="text-nowrap">{{o.DateExpiration | date("d/m/Y")}}</td>
+                <td class="text-nowrap">{{o.createdAt | date("d/m/Y")}}</td>
+                <td class="text-nowrap">{% if o.etat == true %}
+                                        active
+                                        {% else %}
+                                        inactive
+                                        {% endif %}
+                </td>
+                </td>
+                <td class="d-flex">
+                    <a href="{{ path('voir_offre', {'id': o.id}) }}" class="btn btn-link btn-sm">afficher</a> |
+                    <a href="{{ path('modifier_offre', {'id': o.id}) }}" class="btn btn-sm btn-link">modifier</a> |
+                    <a href="{{ path('supprimer_offre', {'id': o.id}) }}" class="btn btn-sm btn-link">supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div/>
+</div>
+{% endblock %}
