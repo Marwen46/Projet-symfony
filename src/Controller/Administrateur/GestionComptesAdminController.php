@@ -2,11 +2,11 @@
 
 namespace App\Controller\Administrateur;
 
-use App\Entity\Administrateur;
+use App\Entity\Admin\Administrateur;
 use App\Form\AjouterAdministrateurType;
-use App\Repository\AdministrateurRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\Admin\AdministrateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GestionComptesAdminController extends AbstractController

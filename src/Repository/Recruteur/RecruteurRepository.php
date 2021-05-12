@@ -1,7 +1,5 @@
 <?php
-
-namespace App\Repository;
-
+namespace App\Repository\Recruteur;
 use App\Entity\Recruteur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;

@@ -2,10 +2,10 @@
 
 namespace App\Controller\Candidat;
 
-use App\Entity\Candidat;
 use App\Form\CandidatType;
-use App\Repository\CandidatRepository;
+use App\Entity\Candidat\Candidat;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\Candidat\CandidatRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 

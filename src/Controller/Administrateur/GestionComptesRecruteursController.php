@@ -2,11 +2,11 @@
 
 namespace App\Controller\Administrateur;
 
-use App\Entity\Recruteur;
 use App\Form\AjouterRecruteurType;
-use App\Repository\RecruteurRepository;
+use App\Entity\Recruteur\Recruteur;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\Recruteur\RecruteurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GestionComptesRecruteursController extends AbstractController

@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Entity;
+namespace App\Entity\Admin;
 
 use App\Repository\AdministrateurRepository;
 use Doctrine\ORM\Mapping as ORM;

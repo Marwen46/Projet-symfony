@@ -1,10 +1,8 @@
 <?php
-
-namespace App\Repository;
-
+namespace App\Repository\Candidat;
 use App\Entity\Candidat;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Candidat|null find($id, $lockMode = null, $lockVersion = null)

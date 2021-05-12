@@ -1,7 +1,5 @@
 <?php
-
-namespace App\Repository;
-
+namespace App\Repository\Admin;
 use App\Entity\Administrateur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
