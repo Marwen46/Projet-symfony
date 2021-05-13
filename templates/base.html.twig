@@ -4,6 +4,14 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
           <link rel="stylesheet" href="/css/bootstrap.min.css">
+         {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+        {% else %}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Subscribe</a></li>
+    {% endif %}
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
             <link rel="stylesheet" href="/css/bootstrap.min.css">
