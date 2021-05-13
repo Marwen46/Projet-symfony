@@ -1,8 +1,8 @@
 <?php
 namespace App\Repository\Recruteur;
-use App\Entity\Recruteur;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Recruteur\Recruteur;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Recruteur|null find($id, $lockMode = null, $lockVersion = null)
