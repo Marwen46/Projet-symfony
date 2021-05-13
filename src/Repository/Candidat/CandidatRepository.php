@@ -1,6 +1,6 @@
 <?php
 namespace App\Repository\Candidat;
-use App\Entity\Candidat;
+use App\Entity\Candidat\Candidat;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
