@@ -13,14 +13,14 @@ class GestionComptesRecruteursController extends AbstractController
 {
 
     /**
-     * @Route("/AffichierRecruteur{id}", name="affichier_recruteur")
+     * @Route("/admin/AffichierRecruteur{id}", name="affichier_recruteur")
      */
     public function affichierRecruteur(RecruteurRepository $recruteurRepository , $id ){
 
         return $this->render('/Administrateur/gestion_recruteurs/affichier_recruteur.html.twig', ['recruteur'=> $recruteurRepository->find($id)]);
     }
     /**
-     * @Route("/ajouterRecruteur", name="ajouter_recruteur")
+     * @Route("/admin/ajouterRecruteur", name="ajouter_recruteur")
      */
     public function ajouter(Request $request )
     {   $Recruteur =new Recruteur();
@@ -36,7 +36,7 @@ class GestionComptesRecruteursController extends AbstractController
         return $this->render('/Administrateur/gestion_recruteurs/ajouter_recruteur.html.twig', ['form'=> $form->createView()]);
     }
     /**
-     * @Route("/modifierRecruteur/{id}", name="modifier_recruteur")
+     * @Route("/admin/modifierRecruteur/{id}", name="modifier_recruteur")
      */
     public function modifier(Request $request,RecruteurRepository $recruteurRepository,$id )
     {   $Recruteur=$recruteurRepository->find($id);
@@ -52,7 +52,7 @@ class GestionComptesRecruteursController extends AbstractController
         return $this->render('/Administrateur/gestion_recruteurs/modifier_recruteur.html.twig', ['form'=> $form->createView()]);
     }
     /**
-     * @Route("/supprimerRecruteur/{id}", name="supprimer_recruteur")
+     * @Route("/admin/supprimerRecruteur/{id}", name="supprimer_recruteur")
      */
     public function supprimer(RecruteurRepository $recruteurRepository,$id )
     {   $Recruteur=$recruteurRepository->find($id);

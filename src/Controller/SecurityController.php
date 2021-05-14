@@ -10,10 +10,19 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/", name="app_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('admin-dashboard');
+        }
+        if ($this->isGranted('ROLE_CANDIDAT')) {
+            return $this->redirectToRoute('candidat');
+        }
+        if ($this->isGranted('ROLE_RECRUTEUR')) {
+            return $this->redirectToRoute('recruteur');
+        }
         if ($this->getUser()) {
             return $this->redirectToRoute('_profiler_home');
         }
