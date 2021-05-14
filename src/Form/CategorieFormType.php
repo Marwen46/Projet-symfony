@@ -2,26 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\Recruteur\Recruteur;
+use App\Entity\Categorie\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AjouterRecruteurType extends AbstractType
+class CategorieFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Nom')
-            ->add('Adresse')
-            ->add('Telephone')
+            ->add('nomCategorie')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Recruteur::class,
+            'data_class' => Categorie::class,
         ]);
     }
 }

@@ -1,3 +1,4 @@
+            throw $this->createNotFoundException(
 <?php
 
 namespace App\Controller\offreEmploi;

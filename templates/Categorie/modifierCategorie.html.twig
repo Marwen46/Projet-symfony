@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une Categorie{% endblock %}
+
+
+{% block body %}
+<div class="container">
+<h1 class="mt-4 ml-2">Modifier Categorie : </h1>
+{{ form_start(form) }}
+  <div class="row">
+    <div class="col-md-7">{{form_row(form.nomCategorie)}}</div>
+  </div>
+{{ form_widget(form) }}
+<button class=" ml-3 btn btn-danger rounded btn-sm" >Modifier</button>
+{{ form_end(form) }}
+</div>
+{% endblock %}

@@ -2,17 +2,17 @@
 
 namespace App\Controller\Candidat;
 
-use App\Entity\Candidat;
 use App\Form\CandidatType;
-use App\Repository\CandidatRepository;
+use App\Entity\Candidat\Candidat;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\Candidat\CandidatRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CandidatController extends AbstractController
 {
     /**
-     * @Route("/ajouterCandidat", name="ajouter_candidat")
+     * @Route("/candidat/ajouterCandidat", name="ajouter_candidat")
      */
     public function ajouter(Request $request )
     {   $Candidat =new Candidat();
@@ -28,7 +28,7 @@ class CandidatController extends AbstractController
         return $this->render('/Candidat/gestion_candidats/ajouter_candidat.html.twig', ['form'=> $form->createView()]);
     }
     /**
-     * @Route("/supprimercandidat{id}", name="supprimer_candidat")
+     * @Route("/candidat/supprimercandidat{id}", name="supprimer_candidat")
      */
     public function supprimer(CandidatRepository $CandidiatRepository,$id )
     {   $Candidiat=$CandidiatRepository->find($id);

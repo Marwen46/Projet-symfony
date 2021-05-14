@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une nouvelle offre{% endblock %}
+
+
+{% block body %}
+<div class="container">
+<h1>Ajouter une nouvelle offre d'emploi : </h1>
+{{ form_start(form) }}
+  <div class="row">
+    <div class="col-md-8">{{form_row(form.Titre)}}</div>
+    <div class="col-md-8">{{form_row(form.Description)}}</div>
+    <div class="col-md-8">{{form_row(form.Experience)}}</div>
+    <div class="col-md-8">{{form_row(form.Emplacement)}}</div>
+    <div class="col-md-8">{{form_row(form.TypeContrat)}}</div>
+    <div class="col-md-8">{{form_row(form.DateExpiration)}}</div>
+    <div class="col-md-8">{{form_row(form.etat)}}</div>
+  </div>
+{{ form_widget(form) }}
+<button class="btn btn-primary rounded btn-md" >créer</button>
+{{ form_end(form) }}
+  </div>
+{% endblock %}

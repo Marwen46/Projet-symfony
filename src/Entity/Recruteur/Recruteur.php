@@ -1,6 +1,7 @@
 <?php
+namespace App\Entity\Recruteur;
 
-namespace App\Entity;
+
 
 use App\Repository\RecruteurRepository;
 use Doctrine\ORM\Mapping as ORM;
