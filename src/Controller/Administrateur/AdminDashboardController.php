@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminDashboardController extends AbstractController
 {
     /**
-     * @Route("/", name="admin-dashboard")
+     * @Route("/admin", name="admin-dashboard")
      */
     public function dashboard2(AdministrateurRepository $AdministrateurRepository,RecruteurRepository $recruteurRepository,CandidatRepository $candidatRepository ){
         

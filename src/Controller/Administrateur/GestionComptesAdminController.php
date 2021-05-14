@@ -13,14 +13,14 @@ class GestionComptesAdminController extends AbstractController
 {
 
     /**
-     * @Route("/AffichierAdministrateur{id}", name="affichier_administrateur")
+     * @Route("/admin/AffichierAdministrateur{id}", name="affichier_administrateur")
      */
     public function affichierAdministrateur(AdministrateurRepository $AdministrateurRepository , $id ){
 
         return $this->render('/Administrateur/gestion_administrateurs/affichier_administrateur.html.twig', ['administrateur'=> $AdministrateurRepository->find($id)]);
     }
     /**
-     * @Route("/ajouterAdministrateur", name="ajouter_administrateur")
+     * @Route("/admin/ajouterAdministrateur", name="ajouter_administrateur")
      */
     public function ajouter(Request $request )
     {   $Administrateur =new Administrateur();
@@ -36,7 +36,7 @@ class GestionComptesAdminController extends AbstractController
         return $this->render('/Administrateur/gestion_administrateurs/ajouter_administrateur.html.twig', ['form'=> $form->createView()]);
     }
     /**
-     * @Route("/modifierAdministrateur/{id}", name="modifier_administrateur")
+     * @Route("/admin/modifierAdministrateur/{id}", name="modifier_administrateur")
      */
     public function modifier(Request $request,AdministrateurRepository $AdministrateurRepository,$id )
     {   $Administrateur=$AdministrateurRepository->find($id);
@@ -52,7 +52,7 @@ class GestionComptesAdminController extends AbstractController
         return $this->render('/Administrateur/gestion_administrateurs/modifier_administrateur.html.twig', ['form'=> $form->createView()]);
     }
     /**
-     * @Route("/supprimerAdministrateur/{id}", name="supprimer_administrateur")
+     * @Route("/admin/supprimerAdministrateur/{id}", name="supprimer_administrateur")
      */
     public function supprimer(AdministrateurRepository $AdministrateurRepository,$id )
     {   $Administrateur=$AdministrateurRepository->find($id);
