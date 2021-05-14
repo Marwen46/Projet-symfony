@@ -1,5 +1,6 @@
-{% extends 'base.html.twig' %} {% block title %}Offre Emploi{% endblock %} {%
-block body %}
+{% extends 'base.html.twig' %} 
+{% block title %}Offre Emploi{% endblock %} 
+{% block body %}
 <div class="container">
   <div>
     {% for o in offres %}
@@ -24,10 +25,10 @@ block body %}
             <p class="card-text mb-0">
               <small
                 class="text-muted"
-                >{{o.createdAt|date('d/m/Y  H:i:s',"Africa/Tunis") }}</small>
+                >{{o.createdAt|date('d/m/Y',"Africa/Tunis") }}</small>
             </p>
               <span style="color: {{ o.etat ? "green" : "red"}}" > {{ o.etat ? "Disponible" : "non disponible" }}  </span>
-            <div class="d-flex justify-content-end">
+              <div class="d-flex justify-content-end">
               <a href="{{ path('voir_offre_en_detail',{id : o.id})}}" class="btn btn-primary rounded btn-sm ">Detail</a>
             </div>
           </div>

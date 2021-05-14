@@ -2,12 +2,13 @@
 
 namespace App\Entity\offreEmploi;
 
-use App\Entity\Categorie\Categorie;
-use App\Entity\Timestamps;
 use DateTime;
 use DateTimeInterface;
+use App\Entity\Timestamps;
 use Webmozart\Assert\Assert;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Categorie\Categorie;
+use Doctrine\ORM\Mapping\JoinColumn;
 use App\Repository\offreEmploi\OffreEmploiRepository;
 /**
  * @ORM\Entity(repositoryClass=OffreEmploiRepository::class)
@@ -60,7 +61,8 @@ class OffreEmploi
     private $etat;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="offreEmplois")
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="offreEmplois",cascade={"persist", "remove"})
+     * @JoinColumn(onDelete="CASCADE")
      */
     private $categorie;
 
