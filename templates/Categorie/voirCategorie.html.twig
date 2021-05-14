@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}afficher Voiture{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1>Categorie : </h1>
+<dl class="row">
+  <dt class="col-sm-3">ID</dt>
+  <dd class="col-sm-9"></span>{{categorie.id}}</dd>
+  <dt class="col-sm-3">Nom de categorie</dt>
+  <dd class="col-sm-9"></span>{{categorie.nomCategorie}}</dd>
+</dl>
+    <div class="d-flex">
+        <a href="{{ path('categorie')}}" class="btn btn-primary rounded btn-sm mt-2">retour</a>
+    <div>
+</div>
+{% endblock %}

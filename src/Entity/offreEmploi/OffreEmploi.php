@@ -2,6 +2,7 @@
 
 namespace App\Entity\offreEmploi;
 
+use App\Entity\Categorie\Categorie;
 use App\Entity\Timestamps;
 use DateTime;
 use DateTimeInterface;
@@ -57,6 +58,11 @@ class OffreEmploi
      * @ORM\Column(type="boolean")
      */
     private $etat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="offres")
+     */
+    private $categorie;
 
     public function getId(): ?int
     {
@@ -147,6 +153,18 @@ class OffreEmploi
     public function setEtat(bool $etat): self
     {
         $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
