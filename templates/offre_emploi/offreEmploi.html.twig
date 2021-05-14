@@ -4,7 +4,9 @@
 
 {% block body %}
 
-      <div class="container">
+
+ <div>
+  <div class="container">
   <h2 class="my-5 font-weight-bold" >Listes des offres d'emplois :</h2>
   <a href="{{ path('ajouter_offre') }}" class="btn btn-link">ajouter une offre</a>
 
@@ -29,12 +31,12 @@
             <tr>
                 <td class="text-nowrap">{{o.id}}</td>
                 <td class="text-nowrap">{{o.Titre}}</td>
-                <td class="text-nowrap">{{o.Description}}</td>
+                <td class="text-nowrap">{{o.Description|length > 30 ? o.Description|slice(0, 30) ~ '...' : o.Description }}</td>
                 <td class="text-nowrap">{{o.Experience}}</td>
                 <td class="text-nowrap">{{o.Emplacement}}</td>
                 <td class="text-nowrap">{{o.TypeContrat}}</td>
                 <td class="text-nowrap">{{o.DateExpiration | date("d/m/Y")}}</td>
-                <td class="text-nowrap">{{o.createdAt | date("d/m/Y")}}</td>
+                <td class="text-nowrap">{{o.createdAt | date("d/m/Y","Africa/Tunis")}}</td>
                 <td class="text-nowrap">{% if o.etat == true %}
                                         active
                                         {% else %}
@@ -51,6 +53,6 @@
         {% endfor %}
         </tbody>
     </table>
-    <div/>
+  <div/>
 </div>
 {% endblock %}

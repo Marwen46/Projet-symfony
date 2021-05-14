@@ -25,14 +25,16 @@ class Categorie
     private $nomCategorie;
 
     /**
-     * @ORM\OneToMany(targetEntity=OffreEmploi::class, mappedBy="categorie",cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=\App\Entity\OffreEmploi\OffreEmploi::class, mappedBy="gategorie")
      */
-    private $offres;
+    private $offreEmplois;
 
     public function __construct()
     {
-        $this->offres = new ArrayCollection();
+        $this->offreEmplois = new ArrayCollection();
     }
+
+   
 
     public function getId(): ?int
     {
@@ -52,32 +54,39 @@ class Categorie
     }
 
     /**
-     * @return Collection|OffreEmploi[]
+     * @return Collection|\App\Entity\OffreEmploi\OffreEmploi[]
      */
-    public function getOffres(): Collection
+    public function getOffreEmplois(): Collection
     {
-        return $this->offres;
+        return $this->offreEmplois;
     }
 
-    public function addOffre(OffreEmploi $offre): self
+    public function addOffreEmploi(\App\Entity\OffreEmploi\OffreEmploi $offreEmploi): self
     {
-        if (!$this->offres->contains($offre)) {
-            $this->offres[] = $offre;
-            $offre->setCategorie($this);
+        if (!$this->offreEmplois->contains($offreEmploi)) {
+            $this->offreEmplois[] = $offreEmploi;
+            $offreEmploi->setCategorie($this);
         }
 
         return $this;
     }
 
-    public function removeOffre(OffreEmploi $offre): self
+    public function removeOffreEmploi(\App\Entity\OffreEmploi\OffreEmploi $offreEmploi): self
     {
-        if ($this->offres->removeElement($offre)) {
+        if ($this->offreEmplois->removeElement($offreEmploi)) {
             // set the owning side to null (unless already changed)
-            if ($offre->getCategorie() === $this) {
-                $offre->setCategorie(null);
+            if ($offreEmploi->getCategorie() === $this) {
+                $offreEmploi->setCategorie(null);
             }
         }
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->nomCategorie;
+    }
+
+
+   
 }

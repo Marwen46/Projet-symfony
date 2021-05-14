@@ -21,7 +21,7 @@
   <dt class="col-sm-3">Date d'expiration</dt>
   <dd class="col-sm-9"></span>{{offre.DateExpiration| date("d/m/Y")}}</dd>
   <dt class="col-sm-3">Date d'ajout de l'offre</dt>
-  <dd class="col-sm-9"></span>{{offre.createdAt| date("d/m/Y")}}</dd>
+  <dd class="col-sm-9"></span>{{offre.createdAt| date("d/m/Y","Africa/Tunis")}}</dd>
  
   <dt class="col-sm-3">L'état de l'offre</dt>
   <dd class="col-sm-9"></span>{% if offre.etat == true %}
