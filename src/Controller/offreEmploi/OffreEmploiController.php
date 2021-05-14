@@ -1,9 +1,11 @@
+            throw $this->createNotFoundException(
 <?php
 
 namespace App\Controller\offreEmploi;
 
 use App\Form\OffreEmploiType;
 use App\Entity\offreEmploi\OffreEmploi;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -66,7 +68,7 @@ class OffreEmploiController extends AbstractController
         return $this->render('offre_emploi/modifierAgence.html.twig',['form'=> $form->createView()]);
     } 
      /**
-     * @Route("/offre-emploi/{id}",name="supprimer_offre");
+     * @Route("/offre-emploi/supprimer/{id}",name="supprimer_offre");
      */
     public function supprimer(int $id): Response
     {
@@ -83,4 +85,25 @@ class OffreEmploiController extends AbstractController
         return $this->redirectToRoute('offre_emploi');   
     
     }
+     /**
+     * @Route("/offre-emploi/sconsulterTous",name="consulter_tous_les_offres");
+     */
+    public function voirTous(OffreEmploiRepository $OffreEmploiRepository,PaginatorInterface $paginator,Request $request)
+    { 
+        $offres=$paginator->paginate($OffreEmploiRepository->findAll(),$request->query->getInt('page', 1),10);
+        return $this->render("offre_emploi/VoirTous.html.twig",["offres"=>$offres]);
+    }
+
+         /**
+     * @Route("/offre-emploi/consulterDetail/{id}",name="voir_offre_en_detail");
+     */
+    public function voirDetails($id): Response
+    {
+        $repo = $this->getDoctrine()->getRepository(OffreEmploi::class);
+        $offre = $repo->find($id);
+        return $this->render('offre_emploi/VoirDetail.html.twig', [
+            'offre' => $offre
+        ]);
+    }
+    
 }

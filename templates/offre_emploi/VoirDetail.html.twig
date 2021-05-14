@@ -21,19 +21,15 @@
   <dt class="col-sm-3">Date d'expiration</dt>
   <dd class="col-sm-9"></span>{{offre.DateExpiration| date("d/m/Y")}}</dd>
   <dt class="col-sm-3">Date d'ajout de l'offre</dt>
-  <dd class="col-sm-9"></span>{{offre.createdAt| date("d/m/Y","Africa/Tunis")}}</dd>
+  <dd class="col-sm-9"></span>{{offre.createdAt| date("d/m/Y")}}</dd>
  
   <dt class="col-sm-3">L'état de l'offre</dt>
-  <dd class="col-sm-9"></span>{% if offre.etat == true %}
-                active
-                {% else %}
-                inactive
-                {% endif %}
+  <dd class="col-sm-9" style="color: {{ offre.etat ? "green" : "red"}}"></span > {{ offre.etat ? "Disponible" : "Non disponible" }} 
                 </dd>
  
-</dl> 
+</dl>
     <div class="d-flex">
-        <a href="{{ path('ajouter_offre')}}" class="btn btn-primary rounded btn-sm mt-3">retour</a>
+        <a href="{{ path('consulter_tous_les_offres')}}" class="btn btn-primary rounded btn-sm mt-3">retour</a>   <a href="{{ path('consulter_tous_les_offres')}}" class=" mx-2 btn btn-success rounded btn-sm mt-3">Appliquer</a>
     <div>
     </div>
 {% endblock %}

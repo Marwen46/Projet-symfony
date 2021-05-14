@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %} {% block title %}Offre Emploi{% endblock %} {%
+block body %}
+<div class="container">
+  <div>
+    {% for o in offres %}
+    {% if o.etat %}
+    <div class="card mb-3" style="max-width: 540px">
+      <div class="row no-gutters">
+        <div class="card-body" style="background-color: rgb(240, 240, 240)">
+          <h5 class="font-weight-bold">{{ o.titre }}</h5>
+          <p
+            class="card-text"
+            style="
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+              width: 50rem;
+            "
+          >
+            {{ o.description }}
+          </p>
+
+          <div>
+            <p class="card-text mb-0">
+              <small
+                class="text-muted"
+                >{{o.createdAt|date('d/m/Y  H:i:s',"Africa/Tunis") }}</small>
+            </p>
+              <span style="color: {{ o.etat ? "green" : "red"}}" > {{ o.etat ? "Disponible" : "non disponible" }}  </span>
+            <div class="d-flex justify-content-end">
+              <a href="{{ path('voir_offre_en_detail',{id : o.id})}}" class="btn btn-primary rounded btn-sm ">Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="pagination justify-content-center">
+    {{ knp_pagination_render(offres) }}
+  </div>
+</div>
+{% endblock %}
