@@ -1,8 +1,5 @@
-            throw $this->createNotFoundException(
 <?php
-
 namespace App\Controller\offreEmploi;
-
 use App\Form\OffreEmploiType;
 use App\Entity\offreEmploi\OffreEmploi;
 use Knp\Component\Pager\PaginatorInterface;
@@ -86,7 +83,7 @@ class OffreEmploiController extends AbstractController
     
     }
      /**
-     * @Route("/offre-emploi/sconsulterTous",name="consulter_tous_les_offres");
+     * @Route("/offre-emploi/consulterTous",name="consulter_tous_les_offres");
      */
     public function voirTous(OffreEmploiRepository $OffreEmploiRepository,PaginatorInterface $paginator,Request $request)
     { 
