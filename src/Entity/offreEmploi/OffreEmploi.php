@@ -35,7 +35,7 @@ class OffreEmploi
     private $Description;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=200)
      */
     private $Experience;
 
@@ -60,10 +60,11 @@ class OffreEmploi
     private $etat;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="offres")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="offreEmplois")
      */
     private $categorie;
+
+   
 
     public function getId(): ?int
     {
@@ -142,9 +143,6 @@ class OffreEmploi
         return $this;
     }
 
-    public function __toString(){
-        return $this->TypeContrat;
-    }
 
     public function getEtat(): ?bool
     {
@@ -169,4 +167,6 @@ class OffreEmploi
 
         return $this;
     }
+
+  
 }
