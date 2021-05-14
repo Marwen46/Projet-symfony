@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}afficher offre{% endblock %}
+
+{% block body %}
+<div  class="container mt-3">
+<h1>Offre : </h1>
+<dl class="row ">
+  <dt class="col-sm-3">ID</dt>
+  <dd class="col-sm-9"></span>{{offre.id}}</dd>
+  <dt class="col-sm-3">Titre</dt>
+  <dd class="col-sm-9"></span>{{offre.Titre}}</dd>
+  <dt class="col-sm-3">Description</dt>
+  <dd class="col-sm-9"></span>{{offre.Description}}</dd>
+  <dt class="col-sm-3">Experience</dt>
+  <dd class="col-sm-9"></span>{{offre.Experience}}</dd>
+  <dt class="col-sm-3">Emplacement</dt>
+  <dd class="col-sm-9"></span>{{offre.Emplacement}}</dd>
+  <dt class="col-sm-3">Type de Contrat</dt>
+  <dd class="col-sm-9"></span>{{offre.TypeContrat}}</dd>
+  <dt class="col-sm-3">Date d'expiration</dt>
+  <dd class="col-sm-9"></span>{{offre.DateExpiration| date("d/m/Y")}}</dd>
+  <dt class="col-sm-3">Date d'ajout de l'offre</dt>
+  <dd class="col-sm-9"></span>{{offre.createdAt| date("d/m/Y")}}</dd>
+ 
+  <dt class="col-sm-3">L'état de l'offre</dt>
+  <dd class="col-sm-9"></span>{% if offre.etat == true %}
+                active
+                {% else %}
+                inactive
+                {% endif %}
+                </dd>
+ 
+</dl> 
+    <div class="d-flex">
+        <a href="{{ path('ajouter_offre')}}" class="btn btn-primary rounded btn-sm mt-3">retour</a>
+    <div>
+    </div>
+{% endblock %}
