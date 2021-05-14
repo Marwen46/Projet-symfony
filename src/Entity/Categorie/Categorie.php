@@ -25,7 +25,7 @@ class Categorie
     private $nomCategorie;
 
     /**
-     * @ORM\OneToMany(targetEntity=OffreEmploi::class, mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity=OffreEmploi::class, mappedBy="categorie",cascade={"persist", "remove"})
      */
     private $offres;
 
