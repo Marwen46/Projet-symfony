@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CandidatController extends AbstractController
 {
     /**
-     * @Route("/candidat/ajouterCandidat", name="ajouter_candidat")
+     * @Route("/candidat/ajouterCandidat ", name="ajouter_candidat")
      */
     public function ajouter(Request $request )
     {   $Candidat =new Candidat();
