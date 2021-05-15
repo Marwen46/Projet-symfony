@@ -1,5 +1,6 @@
 <?php
 namespace App\Entity\Candidat;
+use App\Entity\Categorie\Categorie;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CandidatRepository;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -39,6 +40,12 @@ class Candidat
      * )
      */
     private $Email;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="candidats",cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie;
 
     public function getId(): ?int
     {
@@ -89,6 +96,18 @@ class Candidat
     public function setEmail(string $Email): self
     {
         $this->Email = $Email;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
