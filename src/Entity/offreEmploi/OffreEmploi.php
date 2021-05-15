@@ -61,7 +61,7 @@ class OffreEmploi
     private $etat;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="offreEmplois",cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="offreEmplois",cascade={"persist"})
      * @JoinColumn(onDelete="CASCADE")
      */
     private $categorie;

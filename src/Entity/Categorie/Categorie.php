@@ -2,6 +2,7 @@
 
 namespace App\Entity\Categorie;
 
+use App\Entity\Candidat\Candidat;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use App\Entity\offreEmploi\OffreEmploi;
@@ -31,9 +32,15 @@ class Categorie
      */
     private $offreEmplois;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Candidat::class, mappedBy="categorie")
+     */
+    private $candidats;
+
     public function __construct()
     {
         $this->offreEmplois = new ArrayCollection();
+        $this->candidats = new ArrayCollection();
     }
 
    
@@ -84,11 +91,41 @@ class Categorie
 
         return $this;
     }
+    
+    /**
+     * @return Collection|Candidat[]
+     */
+    public function getCandidats(): Collection
+    {
+        return $this->candidats;
+    }
+    
+    public function addCandidat(Candidat $candidat): self
+    {
+        if (!$this->candidats->contains($candidat)) {
+            $this->candidats[] = $candidat;
+            $candidat->setCategorie($this);
+        }
+        
+        return $this;
+    }
+    
+    public function removeCandidat(Candidat $candidat): self
+    {
+        if ($this->candidats->removeElement($candidat)) {
+            // set the owning side to null (unless already changed)
+            if ($candidat->getCategorie() === $this) {
+                $candidat->setCategorie(null);
+            }
+        }
+        
+        return $this;
+    }
+    
     public function __toString()
     {
         return $this->nomCategorie;
     }
-
 
    
 }
