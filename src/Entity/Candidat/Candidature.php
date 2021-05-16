@@ -1,9 +1,9 @@
 <?php
+namespace App\Entity\Candidat;
 
-namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\Candidat\CandidatureRepository;
+use App\Repository\CandidatCandidatureRepository;
 
 /**
  * @ORM\Entity(repositoryClass=CandidatureRepository::class)
@@ -31,11 +31,6 @@ class Candidature
      * @ORM\Column(type="integer")
      */
     private $Age;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $CvFilename;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -83,17 +78,6 @@ class Candidature
         return $this;
     }
 
-    public function getCvFilename(): ?string
-    {
-        return $this->CvFilename;
-    }
-
-    public function setCvFilename(string $CvFilename): self
-    {
-        $this->CvFilename = $CvFilename;
-
-        return $this;
-    }
 
     public function getExperience(): ?string
     {
