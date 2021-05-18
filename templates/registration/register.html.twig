@@ -6,6 +6,7 @@ body %} {% for flashError in app.flashes('verify_email_error') %}
   <h1>Register</h1>
   <div class="row">
     <div class="col-md-8">{{ form_start(registrationForm) }}</div>
+    <div class="col-md-8">{{ form_row(registrationForm.username) }}</div>
     <div class="col-md-8">{{ form_row(registrationForm.email) }}</div>
     <div class="col-md-8">
       {{ form_row(registrationForm.plainPassword, { label: "Password" }) }}
