@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CandidatController extends AbstractController
 {
     /**
-     * @Route("/candidat/ajouterCandidat ", name="ajouter_candidat")
+     * @Route("/candidat/ajouterCandidat", name="ajouter_candidat")
      */
     public function ajouter(Request $request )
     {   $Candidat =new Candidat();
@@ -25,7 +25,7 @@ class CandidatController extends AbstractController
            $em->flush();
            return $this->redirectToRoute("admin-dashboard");
         }
-        return $this->render('/Candidat/gestion_candidats/ajouter_candidat.html.twig', ['form'=> $form->createView()]);
+        return $this->render('Candidat/gestion_candidats/ajouter_candidat.html.twig', ['form'=> $form->createView()]);
     }
     /**
      * @Route("/candidat/supprimercandidat{id}", name="supprimer_candidat")

@@ -2,8 +2,10 @@
 
 namespace App\Repository\offreEmploi;
 
+use App\Data\SearchData;
 use App\Entity\offreEmploi\OffreEmploi;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Migrations\Query\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +19,32 @@ class OffreEmploiRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, OffreEmploi::class);
+    }
+    /**
+     * @return OffreEmploi[]
+     */
+    public function findSearch(SearchData $search):array
+    {
+        $query = $this
+        ->createQueryBuilder('p')
+            ->join('p.categorie','c')
+            ->select('c','p')
+
+        ;
+        if(!empty($search->q)){
+            $query = $query
+            ->andWhere('p.Titre LIKE :q OR p.Description LIKE :q')
+            ->setParameter('q', "%{$search->q}%");
+        }
+        if(!empty($search->categorie)){
+            $query=$query
+            ->andWhere('c.id IN (:categorie)')
+            ->setParameter('categorie',$search->categorie); 
+        }
+
+
+        return $query->getQuery()->getResult();
+
     }
 
     // /**

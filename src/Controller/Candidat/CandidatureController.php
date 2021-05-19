@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Controller\Candidat;
-use App\Entity\Candidat\Candidature;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use App\Form\CandidatureType;
+use App\Entity\Candidat\Candidature;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -36,10 +38,46 @@ class CandidatureController extends AbstractController
                     // $Candidature->setCvFilename($newFilename);
                 
                 // }
+                
       
         }
         return $this->render('/Candidat/gestion_des_candidatures/postuler.html.twig', ['form'=> $form->createView()]);
+    
+    
     }
+    /**
+     * @Route("/imprimer", name="pdf_list")
+     */
+    public function listel()
+    {
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
 
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+        $candidature = $this->getDoctrine()->getRepository(Candidature::class)->findAll();
+
+
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('Candidat/gestion_candidats/pdf.html.twig', ["candidature" => $candidature]);
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (inline view)
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" => false
+        ]);
+
+
+    }
 
 }
