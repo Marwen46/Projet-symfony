@@ -1,7 +1,10 @@
 <?php
 namespace App\Controller\offreEmploi;
+
+use App\Data\SearchData;
 use App\Form\OffreEmploiType;
 use App\Entity\offreEmploi\OffreEmploi;
+use App\Form\SearchForm;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,7 +40,7 @@ class OffreEmploiController extends AbstractController
         
     }
      /**
-     * @Route("/offre-emploi/consulter/{id}",name="voir_offre");
+     * @Route("/offre-emploi/consulter/{id}",name="voir_offre")
      */
     public function voir($id): Response
     {
@@ -48,7 +51,7 @@ class OffreEmploiController extends AbstractController
         ]);
     }
        /**
-     * @Route("/offre-emploi/modifier/{id}",name="modifier_offre");
+     * @Route("/offre-emploi/modifier/{id}",name="modifier_offre")
      */
     public function modifier(int $id,Request $request): Response
     {   $repo = $this->getDoctrine()->getRepository(OffreEmploi::class);
@@ -65,7 +68,7 @@ class OffreEmploiController extends AbstractController
         return $this->render('offre_emploi/modifierAgence.html.twig',['form'=> $form->createView()]);
     } 
      /**
-     * @Route("/offre-emploi/supprimer/{id}",name="supprimer_offre");
+     * @Route("/offre-emploi/supprimer/{id}",name="supprimer_offre")
      */
     public function supprimer(int $id): Response
     {
@@ -83,16 +86,24 @@ class OffreEmploiController extends AbstractController
     
     }
      /**
-     * @Route("/offre-emploi/consulterTous",name="consulter_tous_les_offres");
+     * @Route("/offre-emploi/consulterTous",name="consulter_tous_les_offres") 
      */
     public function voirTous(OffreEmploiRepository $OffreEmploiRepository,PaginatorInterface $paginator,Request $request)
     { 
-        $offres=$paginator->paginate($OffreEmploiRepository->findAll(),$request->query->getInt('page', 1),10);
-        return $this->render("offre_emploi/VoirTous.html.twig",["offres"=>$offres]);
+       // $offres=$paginator->paginate($OffreEmploiRepository->findAll(),$request->query->getInt('page', 1),10);
+        $data = new SearchData();
+        $form = $this->createForm(SearchForm::class,$data); 
+        $form->handleRequest($request);
+
+        $offres = $OffreEmploiRepository->findSearch($data);
+        return $this->render("offre_emploi/VoirTous.html.twig",[
+            "offres"=>$offres,     
+            'form' =>$form->createView()
+            ]);
     }
 
          /**
-     * @Route("/offre-emploi/consulterDetail/{id}",name="voir_offre_en_detail");
+     * @Route("/offre-emploi/consulterDetail/{id}",name="voir_offre_en_detail")
      */
     public function voirDetails($id): Response
     {
@@ -102,5 +113,6 @@ class OffreEmploiController extends AbstractController
             'offre' => $offre
         ]);
     }
+    
     
 }
