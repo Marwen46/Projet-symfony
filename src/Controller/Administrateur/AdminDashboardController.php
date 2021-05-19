@@ -15,6 +15,6 @@ class AdminDashboardController extends AbstractController
      */
     public function dashboard2(AdministrateurRepository $AdministrateurRepository,RecruteurRepository $recruteurRepository,CandidatRepository $candidatRepository ){
         
-        return $this->render('/Administrateur/Dashboard/admin-dashboard.html.twig',["administrateurs"=>$AdministrateurRepository->findAll(),"recruteurs"=>$recruteurRepository->findAll(),"candidats"=>$candidatRepository->findAll()] );
+        return $this->render('Administrateur/Dashboard/admin-dashboard.html.twig',["administrateurs"=>$AdministrateurRepository->findAll(),"recruteurs"=>$recruteurRepository->findAll(),"candidats"=>$candidatRepository->findAll()] );
     }
 }

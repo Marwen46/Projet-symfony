@@ -1,0 +1,10 @@
+ {% extends 'base.html.twig' %} {% block title %}Accueil{% endblock %} {% block
+body %}
+<div class="container">
+  <h1>Weclome Candidate!</h1>
+   <a
+      href="{{ path('modifier_candidat', {id}) }}"
+      class="btn btn-link btn-sm"
+    >modifier profil</a>
+</div>
+{% endblock %}

@@ -43,7 +43,7 @@ class Candidat
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="candidats",cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $categorie;
 

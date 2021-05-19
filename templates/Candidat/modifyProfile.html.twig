@@ -1,0 +1,18 @@
+ {% extends 'base.html.twig' %} {% block title %}Modify Profile{% endblock %} {% block
+body %} {% for flashError in app.flashes('verify_email_error') %}
+<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+{% endfor %}
+<div class="container">
+  <h1>Modify Profile</h1>
+  <div class="row">
+    <div class="col-md-8">{{ form_start(modifyProfileForm) }}</div>
+    <div class="col-md-8">{{ form_row(modifyProfileForm.username) }}</div>
+    <div class="col-md-8">{{ form_row(modifyProfileForm.email) }}</div>
+    <div class="col-md-8">
+      {{ form_row(modifyProfileForm.plainPassword, { label: "Password" }) }}
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary rounded">Modify</button>
+   {{ form_end(modifyProfileForm) }}
+</div>
+{% endblock %}
