@@ -13,11 +13,11 @@ class GestionComptesRecruteursController extends AbstractController
 {
 
     /**
-     * @Route("/admin/AffichierRecruteur{id}", name="affichier_recruteur")
+     * @Route("/admin/AfficherRecruteur{id}", name="afficher_recruteur")
      */
     public function affichierRecruteur(RecruteurRepository $recruteurRepository , $id ){
 
-        return $this->render('/Administrateur/gestion_recruteurs/affichier_recruteur.html.twig', ['recruteur'=> $recruteurRepository->find($id)]);
+        return $this->render('/Administrateur/gestion_recruteurs/afficher_recruteur.html.twig', ['recruteur'=> $recruteurRepository->find($id)]);
     }
     /**
      * @Route("/admin/ajouterRecruteur", name="ajouter_recruteur")
@@ -31,7 +31,7 @@ class GestionComptesRecruteursController extends AbstractController
            $em= $this->getDoctrine()->getManager();
            $em->persist($Recruteur);
            $em->flush();
-           return $this->redirectToRoute("admin-dashboard");
+           return $this->redirectToRoute("liste-Recruteurs");
         }
         return $this->render('/Administrateur/gestion_recruteurs/ajouter_recruteur.html.twig', ['form'=> $form->createView()]);
     }
@@ -47,7 +47,7 @@ class GestionComptesRecruteursController extends AbstractController
            $em= $this->getDoctrine()->getManager();
            $em->persist($Recruteur);
            $em->flush();
-           return $this->redirectToRoute("admin-dashboard");
+           return $this->redirectToRoute("liste-Recruteurs");
         }
         return $this->render('/Administrateur/gestion_recruteurs/modifier_recruteur.html.twig', ['form'=> $form->createView()]);
     }
@@ -62,7 +62,7 @@ class GestionComptesRecruteursController extends AbstractController
         }
         $em->remove($Recruteur);
         $em->flush();
-        return $this->redirectToRoute("admin-dashboard");
+        return $this->redirectToRoute("liste-Recruteurs");
     }
 
    

@@ -1,44 +1,52 @@
 <?php
 
 namespace App\Controller\Candidat;
-use Dompdf\Dompdf;
-use Dompdf\Options;
 use App\Form\CandidatureType;
 use App\Entity\Candidat\Candidature;
+use Cocur\Slugify\Slugify;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Nzo\FileDownloaderBundle\FileDownloader\FileDownloader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CandidatureController extends AbstractController
 {
+    private $fileDownloader;
+
+    public function __construct(FileDownloader $fileDownloader)
+    {
+        $this->fileDownloader = $fileDownloader;
+        
+        // without autowiring use: $this->get('nzo_file_downloader')
+    }
+
+
     /**
      * @Route("/ajouterCandidature", name="ajouter_candidature")
      */
     public function ajouter(Request $request )
-    {   $Candidature = new Candidature();
+    
+    {   
+        $slugify = new Slugify();
+        $Candidature = new Candidature();
         $form = $this->createForm(CandidatureType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
                 /** @var UploadedFile $uploadedFile */
                 $Candidature = $form->getData();
-                $em= $this->getDoctrine()->getManager();
-                $em->persist($Candidature);
-                $em->flush();
-                $this->redirectToRoute("ajouter_candidature");
-                // $uploadedFile = $form['CvFile']->getData();
-                // if ($uploadedFile) {
-                    // $destination = $this->getParameter('uploads_directory');
-                    // $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-                    // $newFilename = $originalFilename.'-'.uniqid().'.'.$uploadedFile->guessExtension();
-                    // $uploadedFile->move(
-                    //     $destination,
-                    //     $newFilename
-                    // );
-                    // $Candidature->setCvFilename($newFilename);
+                $uploadedFile = $form['CvFile']->getData();
+                if ($uploadedFile) {
+                    $destination = $this->getParameter('uploads_directory');
+                    $originalFilename = $slugify->slugify(pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME));
+                    $newFilename = $originalFilename.'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                    $uploadedFile->move(
+                        $destination,
+                        $newFilename
+                    );
+                    $Candidature->setCvFilename($newFilename);
                 
                 // }
-                
       
         }
         return $this->render('/Candidat/gestion_des_candidatures/postuler.html.twig', ['form'=> $form->createView()]);
@@ -57,27 +65,5 @@ class CandidatureController extends AbstractController
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
         $candidature = $this->getDoctrine()->getRepository(Candidature::class)->findAll();
-
-
-
-        // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('Candidat/gestion_candidats/pdf.html.twig', ["candidature" => $candidature]);
-
-        // Load HTML to Dompdf
-        $dompdf->loadHtml($html);
-
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render the HTML as PDF
-        $dompdf->render();
-
-        // Output the generated PDF to Browser (inline view)
-        $dompdf->stream("mypdf.pdf", [
-            "Attachment" => false
-        ]);
-
-
-    }
 
 }

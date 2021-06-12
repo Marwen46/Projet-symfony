@@ -3,8 +3,8 @@ namespace App\Entity\Recruteur;
 
 
 
-use App\Repository\RecruteurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\Recruteur\RecruteurRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

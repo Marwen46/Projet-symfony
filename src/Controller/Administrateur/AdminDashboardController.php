@@ -11,10 +11,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminDashboardController extends AbstractController
 {
     /**
-     * @Route("/admin", name="admin-dashboard")
+     * @Route("/listeRecruteurs", name="liste-Recruteurs")
      */
-    public function dashboard2(AdministrateurRepository $AdministrateurRepository,RecruteurRepository $recruteurRepository,CandidatRepository $candidatRepository ){
+    public function recruteurs (RecruteurRepository $recruteurRepository){
         
-        return $this->render('Administrateur/Dashboard/admin-dashboard.html.twig',["administrateurs"=>$AdministrateurRepository->findAll(),"recruteurs"=>$recruteurRepository->findAll(),"candidats"=>$candidatRepository->findAll()] );
+        return $this->render('/Administrateur/Dashboard/ListeRecruteurs.html.twig',["recruteurs"=>$recruteurRepository->findAll()] );
+    }
+    /**
+     * @Route("/ListeCandidats", name="Liste-Candidats")
+     */
+    public function candidats (CandidatRepository $candidatRepository ){
+        
+        return $this->render('/Administrateur/Dashboard/ListeCandidats.twig',["candidats"=>$candidatRepository->findAll()] );
+    }
+    /**
+     * @Route("/ListeAdministrateurs", name="Liste-Administrateurs")
+     */
+    public function administrateurs(AdministrateurRepository $AdministrateurRepository ){
+        
+        return $this->render('/Administrateur/Dashboard/ListeAdministrateurs.html.twig',["administrateurs"=>$AdministrateurRepository->findAll()] );
     }
 }
