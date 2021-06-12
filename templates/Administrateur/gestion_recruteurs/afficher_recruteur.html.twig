@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
 {% block title %}Afficher Recruteur{% endblock %}
 
@@ -16,7 +16,7 @@
       <dd class="col-sm-9"></span>{{recruteur.Telephone}}</dd>
     </dl>
     <div class="d-flex">
-          <a href="{{ path('admin-dashboard')}}" class="btn btn-primary btn-sm mt-3">retour</a>
+          <a href="{{ path('liste-Recruteurs')}}" class="btn btn-primary btn-sm mt-3">retour</a>
       <div>
    </div>
 {% endblock %}

@@ -17,23 +17,22 @@ class CandidatureType extends AbstractType
             ->add('Nom')
             ->add('Prenom')
             ->add('Age')
-            ->add('Experience');
-
-            // ->add('CvFile',FileType::class,[
-            //     "mapped"=>false,
-            //     'required' => true,
-            //     'constraints' => [
-            //         new File([
-            //             'mimeTypes' => [
-            //                 'application/pdf',
-            //                 'application/x-pdf',
-            //             ],
-            //             'mimeTypesMessage' => 'Veuillez inserer un document de type PDF',
-            //         ])
-            //     ],
-            // ],
+            ->add('Experience')
+            ->add('CvFile',FileType::class,[
+                "mapped"=>false,
+                'required' => true,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez inserer un document de type PDF',
+                    ])
+                ],
+            ],
             
-            // )
+        );
     }
 
     public function configureOptions(OptionsResolver $resolver)

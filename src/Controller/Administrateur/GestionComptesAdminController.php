@@ -13,7 +13,7 @@ class GestionComptesAdminController extends AbstractController
 {
 
     /**
-     * @Route("/admin/AffichierAdministrateur{id}", name="affichier_administrateur")
+     * @Route("/admin/AfficherAdministrateur{id}", name="afficher_administrateur")
      */
     public function affichierAdministrateur(AdministrateurRepository $AdministrateurRepository , $id ){
 
@@ -31,7 +31,7 @@ class GestionComptesAdminController extends AbstractController
            $em= $this->getDoctrine()->getManager();
            $em->persist($Administrateur);
            $em->flush();
-           return $this->redirectToRoute("admin-dashboard");
+           return $this->redirectToRoute("Liste-Administrateurs");
         }
         return $this->render('/Administrateur/gestion_administrateurs/ajouter_administrateur.html.twig', ['form'=> $form->createView()]);
     }
@@ -47,7 +47,7 @@ class GestionComptesAdminController extends AbstractController
            $em= $this->getDoctrine()->getManager();
            $em->persist($Administrateur);
            $em->flush();
-           return $this->redirectToRoute("admin-dashboard");
+           return $this->redirectToRoute("Liste-Administrateurs");
         }
         return $this->render('/Administrateur/gestion_administrateurs/modifier_administrateur.html.twig', ['form'=> $form->createView()]);
     }
@@ -62,7 +62,7 @@ class GestionComptesAdminController extends AbstractController
         }
         $em->remove($Administrateur);
         $em->flush();
-        return $this->redirectToRoute("admin-dashboard");
+        return $this->redirectToRoute("Liste-Administrateurs");
     }
 
    

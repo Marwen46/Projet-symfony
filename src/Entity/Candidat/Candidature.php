@@ -37,6 +37,11 @@ class Candidature
      */
     private $Experience;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $CvFilename;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -50,6 +55,17 @@ class Candidature
     public function setNom(string $Nom): self
     {
         $this->Nom = $Nom;
+
+        return $this;
+    }
+    public function getCvFilename(): ?string
+    {
+        return $this->CvFilename;
+    }
+
+    public function setCvFilename(string $CvFilename): self
+    {
+        $this->CvFilename = $CvFilename;
 
         return $this;
     }

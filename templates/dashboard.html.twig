@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-
+        J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-
+        Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-
+        wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-
+            Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script>
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
+
+      /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+      }
+    </script>
+    <style>
+      /* The sidebar menu */
+      .sidebar {
+        height: 100%; /* 100% Full-height */
+        width: 0; /* 0 width - change this with JavaScript */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Stay on top */
+        top: 0;
+        left: 0;
+        background-color: #111; /* Black*/
+        overflow-x: hidden; /* Disable horizontal scroll */
+        padding-top: 60px; /* Place content 60px from the top */
+        transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+        position: absolute;
+      }
+
+      /* The sidebar links */
+      .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
+
+      /* When you mouse over the navigation links, change their color */
+      .sidebar a:hover {
+        color: #f1f1f1;
+      }
+
+      /* Position and style the close button (top right corner) */
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      /* The button used to open the sidebar */
+      .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #6c757d;
+        color: white;
+        border: none;
+      }
+
+      .openbtn:hover {
+        background-color: #444;
+      }
+
+      /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+      #main {
+        transition: margin-left 0.5s; /* If you want a transition effect */
+        padding: 20px;
+      }
+
+      /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+      @media screen and (max-height: 450px) {
+        .sidebar {
+          padding-top: 15px;
+        }
+        .sidebar a {
+          font-size: 18px;
+        }
+      }
+    </style>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    {% block javascripts %}
+    <script>
+      $(".custom-file-input").on("change", function (event) {
+        var inputFile = event.currentTarget;
+        if (inputFile.files.length === 0) {
+          $(inputFile).parent().find(".custom-file-label").text()(
+            "Selectionner un fichier svp"
+          );
+        } else {
+          $(inputFile).parent().find(".custom-file-label").text()(
+            inputFile.files[0].name
+          );
+        }
+      });
+    </script>
+    {% endblock %}
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block navbar %}
+    <nav class="navbar navbar-expand-sm navbar-dark bg-secondary mb-3 pl-0">
+      <div class="container pl-0 ml-2">
+        <button class="openbtn" onclick="openNav()">&#9776;</button>
+        <a href="#" class="navbar-brand">Jobs For you</a>
+        {% if app.user %}
+        <div class="mb-3">
+          <div class="collapse navbar-collapse" id="mobile-nav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                You are logged in as {{ app.user.username }},
+                <a href="{{ path('app_logout') }}">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {%else %}
+        <div class="collapse navbar-collapse" id="mobile-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="/" style="color: #fff">Login</a></li>
+            <li class="nav-item" style="margin-left: 20px; color: #ffff">
+              <a href="/register" style="color: #fff">Register</a>
+            </li>
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+    </nav>
+    {% endblock %}
+  </head>
+  <body>
+    {% block sidebar %}
+    <div id="mySidebar" class="sidebar" style="margin-top: 56px; width: 250px">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <a href="{{ path('liste-Recruteurs') }}">Recruteurs</a>
+      <a href="{{ path('Liste-Administrateurs') }}">Administrateurs</a>
+      <a href="{{ path('Liste-Candidats') }}">Candidats</a>
+    </div>
+
+    <div id="main" style="margin-left: 250px">
+      {% block body %} {% endblock %}
+    </div>
+    {% endblock %}
+  </body>
+</html>

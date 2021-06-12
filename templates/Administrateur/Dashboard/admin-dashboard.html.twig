@@ -1,5 +1,6 @@
-{% extends 'base.html.twig' %} {% block title %}Hello
-GestionComptesController!{% endblock %} {% block body %}
+{% extends 'dashboard.html.twig' %} {% block title %}Hello
+GestionComptesController!{% endblock %} 
+{% block body %}
 <style>
   .example-wrapper {
     margin: 1em auto;
@@ -14,15 +15,6 @@ GestionComptesController!{% endblock %} {% block body %}
 </style>
 
 <div class="container">
-  {#<nav# class="navbar navbar-dark bg-dark justify-content-between">
-    <a class="navbar-brand"> {{ AdminMail }}</a>
-    <form class="form-inline">
-      <a href="{{ path('app_logout') }}"
-        >|
-        <button type="button" class="btn btn-light">Déconnexion</button>
-      </a>
-    </form>
-  </nav#}
   <div class="container pl-0">
     <h2 class="my-1 font-weight-bold">Listes des recruteurs :</h2>
     <a href="{{ path('ajouter_recruteur') }}" class="btn btn-link pl-0"
@@ -49,7 +41,7 @@ GestionComptesController!{% endblock %} {% block body %}
           <td class="text-nowrap">{{ v.Telephone }}</td>
           <td class="d-flex">
             <a
-              href="{{ path('affichier_recruteur', { id: v.id }) }}"
+              href="{{ path('afficher_recruteur', { id: v.id }) }}"
               class="btn btn-link btn-sm"
               >afficher</a
             >
@@ -99,7 +91,7 @@ GestionComptesController!{% endblock %} {% block body %}
           <td class="text-nowrap">{{ v.Prenom }}</td>
           <td class="d-flex">
             <a
-              href="{{ path('affichier_administrateur', { id: v.id }) }}"
+              href="{{ path('afficher_administrateur', { id: v.id }) }}"
               class="btn btn-link btn-sm"
               >afficher</a
             >
