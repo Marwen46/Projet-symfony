@@ -35,12 +35,17 @@ class RegistrationController extends AbstractController
             );
             $user->setUsername($form->get('username')->getData());
             $user->setRoles(["ROLE_CANDIDAT"]);
+            $user->setNom($form->get('Nom')->getData());
+            $user->setPrenom($form->get('Prenom')->getData());
+            $user->setAge($form->get('Age')->getData());
+            $user->setAdresse($form->get('Adresse')->getData());
+            $user->setTelephone($form->get('Telephone')->getData());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('candidat_registration');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [

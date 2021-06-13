@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class OffreEmploiType extends AbstractType
 {
@@ -15,7 +16,13 @@ class OffreEmploiType extends AbstractType
     {
         $builder
             ->add('Titre')
-            ->add('Description')
+            ->add('Description',CKEditorType::class,[
+                'config' =>[
+                    'uiColor' => "#e2e2e2",
+                    'toolbar' => 'full',
+                    'required' => true,
+                ]
+            ])
             ->add('Experience')
             ->add('Emplacement')
             ->add('TypeContrat', ChoiceType::class, [

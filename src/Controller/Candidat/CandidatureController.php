@@ -51,7 +51,7 @@ class CandidatureController extends AbstractController
         }
         return $this->render('/Candidat/gestion_des_candidatures/postuler.html.twig', ['form'=> $form->createView()]);
     
-    
+        }
     }
     /**
      * @Route("/imprimer", name="pdf_list")
@@ -65,5 +65,7 @@ class CandidatureController extends AbstractController
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
         $candidature = $this->getDoctrine()->getRepository(Candidature::class)->findAll();
+    }
+    
 
 }

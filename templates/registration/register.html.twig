@@ -8,10 +8,16 @@ body %} {% for flashError in app.flashes('verify_email_error') %}
     <div class="col-md-8">{{ form_start(registrationForm) }}</div>
     <div class="col-md-8">{{ form_row(registrationForm.username) }}</div>
     <div class="col-md-8">{{ form_row(registrationForm.email) }}</div>
+    <div class="col-md-8">{{ form_row(registrationForm.Nom) }}</div>
+    <div class="col-md-8">{{ form_row(registrationForm.Prenom) }}</div>
+    <div class="col-md-8">{{ form_row(registrationForm.Age) }}</div>
+    <div class="col-md-8">{{ form_row(registrationForm.Telephone) }}</div>
+    <div class="col-md-8">{{ form_row(registrationForm.Prenom) }}</div>
+    <div class="col-md-8">{{ form_row(registrationForm.Adresse) }}</div>
     <div class="col-md-8">
       {{ form_row(registrationForm.plainPassword, { label: "Password" }) }}
     </div>
-    <div class="col-md-8">{{ form_row(registrationForm.agreeTerms) }}</div>
+    {# <div class="col-md-8">{{ form_row(registrationForm.agreeTerms) }}</div> #}
   </div>
   <button type="submit" class="btn btn-primary rounded">Register</button>
   {{ form_end(registrationForm) }}
