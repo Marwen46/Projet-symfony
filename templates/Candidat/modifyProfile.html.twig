@@ -8,6 +8,12 @@ body %} {% for flashError in app.flashes('verify_email_error') %}
     <div class="col-md-8">{{ form_start(modifyProfileForm) }}</div>
     <div class="col-md-8">{{ form_row(modifyProfileForm.username) }}</div>
     <div class="col-md-8">{{ form_row(modifyProfileForm.email) }}</div>
+    <div class="col-md-8">{{ form_row(modifyProfileForm.Nom) }}</div>
+    <div class="col-md-8">{{ form_row(modifyProfileForm.Prenom) }}</div>
+    <div class="col-md-8">{{ form_row(modifyProfileForm.Age) }}</div>
+    <div class="col-md-8">{{ form_row(modifyProfileForm.Telephone) }}</div>
+    <div class="col-md-8">{{ form_row(modifyProfileForm.Prenom) }}</div>
+    <div class="col-md-8">{{ form_row(modifyProfileForm.Adresse) }}</div>
     <div class="col-md-8">
       {{ form_row(modifyProfileForm.plainPassword, { label: "Password" }) }}
     </div>

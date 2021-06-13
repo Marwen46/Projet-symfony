@@ -133,6 +133,9 @@ GestionComptesController!{% endblock %}
 
       <tbody>
         {% for v in candidats %}
+        {# <pre>
+        {# {{ dump(v.roles) }}
+        </pre> #}
         <tr>
           <td class="text-nowrap">{{ v.id }}</td>
           <td class="text-nowrap">{{ v.Nom }}</td>
@@ -147,7 +150,6 @@ GestionComptesController!{% endblock %}
             >
           </td>
         </tr>
-
         {% endfor %} {% else %}
         <h3>pas des candidats trouvée</h3>
         {% endif %}
