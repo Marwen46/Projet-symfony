@@ -3,6 +3,10 @@ namespace App\Entity\Recruteur;
 
 
 
+use App\Entity\OffreEmploi\OffreEmploi;
+use App\Repository\RecruteurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\Recruteur\RecruteurRepository;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -33,6 +37,16 @@ class Recruteur
      * @ORM\Column(type="integer", unique=true)
      */
     private $Telephone;
+
+    /**
+     * @ORM\OneToMany(targetEntity=OffreEmploi::class, mappedBy="recruteur", orphanRemoval=true)
+     */
+    private $offreEmplois;
+
+    public function __construct()
+    {
+        $this->offreEmplois = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -71,6 +85,36 @@ class Recruteur
     public function setTelephone(int $Telephone): self
     {
         $this->Telephone = $Telephone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|OffreEmploi[]
+     */
+    public function getOffreEmplois(): Collection
+    {
+        return $this->offreEmplois;
+    }
+
+    public function addOffreEmploi(OffreEmploi $offreEmploi): self
+    {
+        if (!$this->offreEmplois->contains($offreEmploi)) {
+            $this->offreEmplois[] = $offreEmploi;
+            $offreEmploi->setRecruteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffreEmploi(OffreEmploi $offreEmploi): self
+    {
+        if ($this->offreEmplois->removeElement($offreEmploi)) {
+            // set the owning side to null (unless already changed)
+            if ($offreEmploi->getRecruteur() === $this) {
+                $offreEmploi->setRecruteur(null);
+            }
+        }
 
         return $this;
     }

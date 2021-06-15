@@ -2,6 +2,7 @@
 
 namespace App\Entity\offreEmploi;
 
+use App\Entity\Recruteur\Recruteur;
 use DateTime;
 use DateTimeInterface;
 use App\Entity\Timestamps;
@@ -65,6 +66,12 @@ class OffreEmploi
      * @JoinColumn(onDelete="CASCADE")
      */
     private $categorie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Recruteur::class, inversedBy="offreEmplois")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $recruteur;
 
    
 
@@ -166,6 +173,18 @@ class OffreEmploi
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getRecruteur(): ?Recruteur
+    {
+        return $this->recruteur;
+    }
+
+    public function setRecruteur(?Recruteur $recruteur): self
+    {
+        $this->recruteur = $recruteur;
 
         return $this;
     }
