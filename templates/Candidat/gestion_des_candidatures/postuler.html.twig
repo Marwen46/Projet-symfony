@@ -4,11 +4,8 @@
 <div class="container">
   <h1 class="mt-4 ml-2">Postuler  :</h1>
   {{ form_start(form) }}
-  <div class="col-6">{{ form_row(form.Nom) }}</div>
-  <div class="col-6">{{ form_row(form.Prenom) }}</div>
-  <div class="col-6">{{ form_row(form.Age) }}</div>
   <div class="col-6">{{ form_row(form.Experience) }}</div>
-  {# <div class="col-6">{{ form_row(form.CvFile,{attr:{placeholder:"inserer votre cv ici"}}) }}</div> #}
+  <div class="col-6">{{ form_row(form.CvFile) }}</div> 
   {{ form_widget(form) }}
  
   

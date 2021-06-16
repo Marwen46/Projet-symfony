@@ -6,19 +6,36 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\Candidat\CandidatureRepository;
+use Nzo\FileDownloaderBundle\FileDownloader\FileDownloader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GestionCandidatureController extends AbstractController
 {
+
+    private $fileDownloader;
+
+    public function __construct(FileDownloader $fileDownloader)
+    {
+        $this->fileDownloader = $fileDownloader;
+        
+    }
+
     /**
      * @Route("/afficherTousCandidature", name="afficher_tousCandidature")
      */
     public function afficherTout(CandidatureRepository  $CandidatureRepository)
     {
         $Candidatures=$CandidatureRepository->findAll();
-        return $this->render('Recruteur/gestion_condidature.html.twig', [
+        return $this->render('Recruteur/gestion_candidature.html.twig', [
             'Candidatures' => $Candidatures,
         ]);
+    }
+
+    /**
+     * @Route("/telecharger_Cv/{filename}", name="telecharger_candidature_cv")
+     */
+    public function telecharger_cv($filename){
+        return $this->fileDownloader->downloadFile("uploads/CV/$filename");
     }
     /**
      *@Route ("/supprimerCandidature/{id}",name="supprimer_candidature")

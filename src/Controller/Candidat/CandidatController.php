@@ -28,7 +28,7 @@ class CandidatController extends AbstractController
            $em= $this->getDoctrine()->getManager();
            $em->persist($Candidat);
            $em->flush();
-           return $this->redirectToRoute("admin-dashboard");
+           return $this->redirectToRoute("Liste-Candidats");
         }
         return $this->render('Candidat/gestion_candidats/ajouter_candidat.html.twig', ['form'=> $form->createView()]);
     }
@@ -51,7 +51,7 @@ class CandidatController extends AbstractController
         }
         $em->remove($Candidiat);
         $em->flush();
-        return $this->redirectToRoute("admin-dashboard");
+        return $this->redirectToRoute("Liste-Candidats");
     }
     /**
      * @Route("/candidat/modifier_candidat/{id}", name="modifier_candidat")

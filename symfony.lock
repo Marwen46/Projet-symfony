@@ -136,6 +136,12 @@
     "nzo/file-downloader-bundle": {
         "version": "v4.0.2"
     },
+    "phenx/php-font-lib": {
+        "version": "0.5.2"
+    },
+    "phenx/php-svg-lib": {
+        "version": "v0.3.3"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
