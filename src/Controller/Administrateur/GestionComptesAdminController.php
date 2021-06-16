@@ -2,12 +2,13 @@
 
 namespace App\Controller\Administrateur;
 
-use App\Entity\Admin\Administrateur;
+use App\Entity\User;
 use App\Form\AjouterAdministrateurType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\Admin\AdministrateurRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class GestionComptesAdminController extends AbstractController
 {
@@ -15,19 +16,26 @@ class GestionComptesAdminController extends AbstractController
     /**
      * @Route("/admin/AfficherAdministrateur{id}", name="afficher_administrateur")
      */
-    public function affichierAdministrateur(AdministrateurRepository $AdministrateurRepository , $id ){
+    public function affichierAdministrateur(UserRepository $AdministrateurRepository , $id ){
 
         return $this->render('/Administrateur/gestion_administrateurs/afficher_administrateur.html.twig', ['administrateur'=> $AdministrateurRepository->find($id)]);
     }
     /**
      * @Route("/admin/ajouterAdministrateur", name="ajouter_administrateur")
      */
-    public function ajouter(Request $request )
-    {   $Administrateur =new Administrateur();
+    public function ajouter(Request $request, UserPasswordEncoderInterface $passwordEncoder )
+    {   $Administrateur =new User();
         $form = $this->createForm(AjouterAdministrateurType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $Administrateur=$form->getData();
+            $Administrateur->setRoles(["ROLE_ADMIN"]);
+            $Administrateur->setPassword(
+                $passwordEncoder->encodePassword(
+                    $Administrateur,
+                    $form->get('plainPassword')->getData()
+                )
+            );
            $em= $this->getDoctrine()->getManager();
            $em->persist($Administrateur);
            $em->flush();
@@ -38,7 +46,7 @@ class GestionComptesAdminController extends AbstractController
     /**
      * @Route("/admin/modifierAdministrateur/{id}", name="modifier_administrateur")
      */
-    public function modifier(Request $request,AdministrateurRepository $AdministrateurRepository,$id )
+    public function modifier(Request $request,UserRepository $AdministrateurRepository,$id )
     {   $Administrateur=$AdministrateurRepository->find($id);
         $form = $this->createForm(AjouterAdministrateurType::class,$Administrateur);
         $form->handleRequest($request);
@@ -54,7 +62,7 @@ class GestionComptesAdminController extends AbstractController
     /**
      * @Route("/admin/supprimerAdministrateur/{id}", name="supprimer_administrateur")
      */
-    public function supprimer(AdministrateurRepository $AdministrateurRepository,$id )
+    public function supprimer(UserRepository $AdministrateurRepository,$id )
     {   $Administrateur=$AdministrateurRepository->find($id);
         $em=$this->getDoctrine()->getManager();
         if(!$Administrateur){

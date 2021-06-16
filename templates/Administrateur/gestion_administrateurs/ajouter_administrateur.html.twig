@@ -5,6 +5,11 @@ endblock %} {% block body %}
   {{ form_start(form) }}
   <div class="col-6">{{ form_row(form.Nom) }}</div>
   <div class="col-6">{{ form_row(form.Prenom) }}</div>
+  <div class="col-md-8">{{ form_row(form.email) }}</div>
+    <div class="col-md-8">{{ form_row(form.Telephone) }}</div>
+    <div class="col-md-8">
+      {{ form_row(form.plainPassword, { label: "Password" }) }}
+    </div>
   {{ form_widget(form) }}
   <button class="ml-3 btn btn-primary mb-3">Ajouter</button>
   {{ form_end(form) }}
