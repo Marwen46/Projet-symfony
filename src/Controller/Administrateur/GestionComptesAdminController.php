@@ -17,7 +17,7 @@ class GestionComptesAdminController extends AbstractController
      */
     public function affichierAdministrateur(AdministrateurRepository $AdministrateurRepository , $id ){
 
-        return $this->render('/Administrateur/gestion_administrateurs/affichier_administrateur.html.twig', ['administrateur'=> $AdministrateurRepository->find($id)]);
+        return $this->render('/Administrateur/gestion_administrateurs/afficher_administrateur.html.twig', ['administrateur'=> $AdministrateurRepository->find($id)]);
     }
     /**
      * @Route("/admin/ajouterAdministrateur", name="ajouter_administrateur")

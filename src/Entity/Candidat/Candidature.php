@@ -21,6 +21,10 @@ class Candidature
      * @ORM\Column(type="string", length=30)
      */
     private $Nom;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Telephone;
 
     /**
      * @ORM\Column(type="string", length=30)
@@ -31,6 +35,10 @@ class Candidature
      * @ORM\Column(type="integer")
      */
     private $Age;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $CandidatId;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -90,6 +98,28 @@ class Candidature
     public function setAge(int $Age): self
     {
         $this->Age = $Age;
+
+        return $this;
+    }
+    public function getTelephone(): ?int
+    {
+        return $this->Telephone;
+    }
+
+    public function setTelephone(int $Telephone): self
+    {
+        $this->Telephone = $Telephone;
+
+        return $this;
+    }
+    public function getCandidatId(): ?int
+    {
+        return $this->CandidatId;
+    }
+
+    public function setCandidatId(int $CandidatId): self
+    {
+        $this->CandidatId = $CandidatId;
 
         return $this;
     }
