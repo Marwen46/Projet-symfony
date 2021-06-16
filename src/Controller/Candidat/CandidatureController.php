@@ -4,28 +4,22 @@ namespace App\Controller\Candidat;
 use App\Form\CandidatureType;
 use App\Entity\Candidat\Candidature;
 use Cocur\Slugify\Slugify;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Nzo\FileDownloaderBundle\FileDownloader\FileDownloader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mime\Email;
 
 class CandidatureController extends AbstractController
 {
-    private $fileDownloader;
-
-    public function __construct(FileDownloader $fileDownloader)
-    {
-        $this->fileDownloader = $fileDownloader;
-        
-        // without autowiring use: $this->get('nzo_file_downloader')
-    }
-
 
     /**
      * @Route("/ajouterCandidature", name="ajouter_candidature")
      */
-    public function ajouter(Request $request )
+    public function ajouter(Request $request,EntityManagerInterface $em )
     
     {   
         $slugify = new Slugify();
@@ -45,27 +39,18 @@ class CandidatureController extends AbstractController
                         $newFilename
                     );
                     $Candidature->setCvFilename($newFilename);
-                
-                // }
-      
-        }
-        return $this->render('/Candidat/gestion_des_candidatures/postuler.html.twig', ['form'=> $form->createView()]);
-    
-        }
+                    $Candidature->setCandidatId($this->getuser()->getId());
+                    $Candidature->setNom($this->getuser()->getNom());
+                    $Candidature->setPrenom($this->getuser()->getPrenom());
+                    $Candidature->setTelephone($this->getuser()->getTelephone());
+                    $Candidature->setAge($this->getuser()->getAge());
+                    $em->persist($Candidature);
+                    $em->flush();
+                    return $this->redirectToRoute("ajouter_candidature");
+                    
+                    }
+        
     }
-    /**
-     * @Route("/imprimer", name="pdf_list")
-     */
-    public function listel()
-    {
-        // Configure Dompdf according to your needs
-        $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
-
-        // Instantiate Dompdf with our options
-        $dompdf = new Dompdf($pdfOptions);
-        $candidature = $this->getDoctrine()->getRepository(Candidature::class)->findAll();
-    }
-    
-
+    return $this->render('/Candidat/gestion_des_candidatures/postuler.html.twig', ['form'=> $form->createView()]);
+}
 }

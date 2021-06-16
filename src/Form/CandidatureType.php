@@ -14,9 +14,6 @@ class CandidatureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Nom')
-            ->add('Prenom')
-            ->add('Age')
             ->add('Experience')
             ->add('CvFile',FileType::class,[
                 "mapped"=>false,

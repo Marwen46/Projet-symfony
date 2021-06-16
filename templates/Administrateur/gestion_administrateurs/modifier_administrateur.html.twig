@@ -3,8 +3,13 @@ endblock %} {% block body %}
 <div class="container">
   <h1 class="mt-4 ml-2">Modifier un Administrateur :</h1>
   {{ form_start(form) }}
-  <div class="col-6">{{ form_row(form.Nom) }}</div>
+   <div class="col-6">{{ form_row(form.Nom) }}</div>
   <div class="col-6">{{ form_row(form.Prenom) }}</div>
+  <div class="col-md-8">{{ form_row(form.email) }}</div>
+    <div class="col-md-8">{{ form_row(form.Telephone) }}</div>
+    <div class="col-md-8">
+      {{ form_row(form.plainPassword, { label: "Password" }) }}
+    </div>
   {{ form_widget(form) }}
   <button class="ml-3 btn btn-warning mb-3">Modifier</button>
   {{ form_end(form) }}

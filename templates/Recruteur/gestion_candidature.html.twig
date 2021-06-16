@@ -29,7 +29,6 @@ endblock %} {% block body %}
           <th scope="col">Action</th>
         </tr>
       </thead>
-
       <tbody>
         {% for v in Candidatures %}
         <tr>
@@ -55,7 +54,7 @@ endblock %} {% block body %}
             >
 
             <a
-              href="{{ path('modifier_recruteur', { id: v.id }) }}"
+              href="{{ path('fixer-rendez-vous', { id: v.id }) }}"
               class="btn btn-success rounded btn-sm mx-2"
               ><span style="font-weight: bold">&#10003;</span></a
             >

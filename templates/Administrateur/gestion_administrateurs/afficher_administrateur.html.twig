@@ -12,9 +12,11 @@
       <dd class="col-sm-9"></span>{{administrateur.Nom}}</dd>
       <dt class="col-sm-3">Prenom : </dt>
       <dd class="col-sm-9"></span>{{administrateur.Prenom}}</dd>
+      <dt class="col-sm-3">Email : </dt>
+      <dd class="col-sm-9"></span>{{administrateur.email}}</dd>
     </dl>
     <div class="d-flex">
-          <a href="{{ path('admin-dashboard')}}" class="btn btn-primary btn-sm mt-3">retour</a>
+          <a href="{{ path('Liste-Administrateurs')}}" class="btn btn-primary btn-sm mt-3">retour</a>
       <div>
    </div>
 {% endblock %}
