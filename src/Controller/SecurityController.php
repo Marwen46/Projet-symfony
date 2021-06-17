@@ -21,7 +21,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('Accueil_Candidat');
         }
         if ($this->isGranted('ROLE_RECRUTEUR')) {
-            return $this->redirectToRoute('recruteur');
+            return $this->redirectToRoute('offre_emploi');
         }
         if ($this->getUser()) {
             return $this->redirectToRoute('_profiler_home');

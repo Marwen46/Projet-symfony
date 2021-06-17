@@ -15,6 +15,9 @@ GestionComptesController!{% endblock %} {% block body %}
 
 <div class="container">
   <h2 class="my-1 font-weight-bold">Listes des candidats :</h2>
+     <a href="{{ path('ajouter_candidat') }}" class="btn btn-link pl-0"
+      >Ajouter un candidat</a
+    >
   {% if candidats %}
   <table class="table">
     <thead class="thead-dark">
@@ -42,6 +45,18 @@ GestionComptesController!{% endblock %} {% block body %}
             class="btn btn-link btn-sm"
             >supprimer</a
           >
+            |
+            <a
+              href="{{ path('modifier_candidatpadmin', { id: v.id }) }}"
+              class="btn btn-link btn-sm"
+              >modifier</a
+            >
+            |
+            <a
+              href="{{ path('supprimer_candidat', { id: v.id }) }}"
+              class="btn btn-sm btn-link"
+              >supprimer</a
+            >
         </td>
       </tr>
 
