@@ -71,6 +71,16 @@ class User implements UserInterface
      */
     private $age;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $lastLogin;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $postulationRestant;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -223,6 +233,30 @@ class User implements UserInterface
     public function setAge(?int $age): self
     {
         $this->age = $age;
+
+        return $this;
+    }
+
+    public function getLastLogin(): ?\DateTimeInterface
+    {
+        return $this->lastLogin;
+    }
+
+    public function setLastLogin(?\DateTimeInterface $lastLogin): self
+    {
+        $this->lastLogin = $lastLogin;
+
+        return $this;
+    }
+
+    public function getPostulationRestant(): ?int
+    {
+        return $this->postulationRestant;
+    }
+
+    public function setPostulationRestant(?int $postulationRestant): self
+    {
+        $this->postulationRestant = $postulationRestant;
 
         return $this;
     }

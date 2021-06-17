@@ -31,12 +31,12 @@
             <tr>
                 <td class="text-nowrap">{{o.id}}</td>
                 <td class="text-nowrap">{{o.Titre}}</td>
-                <td class="text-nowrap">{{o.Description|raw|length > 30 ? o.Description|slice(0, 30) ~ '...' : o.Description }}</td>
+                <td class="text-nowrap">{{o.Description|raw|length > 30 ? o.Description|raw|slice(0, 30) ~ '...' : o.Description|raw }}</td>
                 <td class="text-nowrap">{{o.Experience}}</td>
                 <td class="text-nowrap">{{o.Emplacement}}</td>
                 <td class="text-nowrap">{{o.TypeContrat}}</td>
                 <td class="text-nowrap">{{o.DateExpiration | date("d/m/Y")}}</td>
-                <td class="text-nowrap">{{o.createdAt | date("d/m/Y","Africa/Tunis")}}</td>
+                <td class="text-nowrap">{{o.createdAt | date("d/m/Y")}}</td>
                 <td class="text-nowrap">{% if o.etat == true %}
                                         active
                                         {% else %}
