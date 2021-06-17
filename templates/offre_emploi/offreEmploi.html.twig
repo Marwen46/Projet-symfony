@@ -6,7 +6,7 @@
 
 
  <div>
-  <div class="container">
+  <div class="container-fluid">
   <h2 class="my-5 font-weight-bold" >Listes des offres d'emplois :</h2>
   <a href="{{ path('ajouter_offre') }}" class="btn btn-link">ajouter une offre</a>
 
@@ -31,7 +31,7 @@
             <tr>
                 <td class="text-nowrap">{{o.id}}</td>
                 <td class="text-nowrap">{{o.Titre}}</td>
-                <td class="text-nowrap">{{o.Description|length > 30 ? o.Description|slice(0, 30) ~ '...' : o.Description }}</td>
+                <td class="text-nowrap">{{o.Description|raw|length > 30 ? o.Description|slice(0, 30) ~ '...' : o.Description }}</td>
                 <td class="text-nowrap">{{o.Experience}}</td>
                 <td class="text-nowrap">{{o.Emplacement}}</td>
                 <td class="text-nowrap">{{o.TypeContrat}}</td>
@@ -45,9 +45,9 @@
                 </td>
                 </td>
                 <td class="d-flex">
-                    <a href="{{ path('voir_offre', {'id': o.id}) }}" class="btn btn-link btn-sm">afficher</a> |
-                    <a href="{{ path('modifier_offre', {'id': o.id}) }}" class="btn btn-sm btn-link">modifier</a> |
-                    <a href="{{ path('supprimer_offre', {'id': o.id}) }}" class="btn btn-sm btn-link">supprimer</a>
+                    <a href="{{ path('voir_offre', {'id': o.id}) }}" class="btn btn-primary btn-sm"><i class="fas fa-search-plus"></i></a>&nbsp;
+                    <a href="{{ path('modifier_offre', {'id': o.id}) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>&nbsp;
+                    <a href="{{ path('supprimer_offre', {'id': o.id}) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {% endfor %}
