@@ -4,11 +4,13 @@ namespace App\Controller\Administrateur;
 
 use App\Entity\User;
 use App\Form\AjouterAdministrateurType;
+use App\Form\ReglesType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Repository\ReglesRepository;
 
 class GestionComptesAdminController extends AbstractController
 {
@@ -71,6 +73,24 @@ class GestionComptesAdminController extends AbstractController
         $em->remove($Administrateur);
         $em->flush();
         return $this->redirectToRoute("Liste-Administrateurs");
+    }
+    
+    /**
+     * @Route("/regles/{id}", name="modifier_Regles")
+     */
+    public function modifierRegles(Request $request,ReglesRepository $ReglesRepository,$id )
+    {
+        $regles=$ReglesRepository->find($id);
+        $form = $this->createForm(ReglesType::class,$regles);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $regles=$form->getData();
+           $em= $this->getDoctrine()->getManager();
+           $em->persist($regles);
+           $em->flush();
+           return $this->redirectToRoute("afficher-Regles");
+        }
+        return $this->render('Administrateur/modifierRegles.html.twig',  ['modifierRegles'=> $form->createView()]);
     }
 
    

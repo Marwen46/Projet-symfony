@@ -4,8 +4,7 @@ namespace App\Controller\Administrateur;
 
 use App\Repository\UserRepository;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\Recruteur\RecruteurRepository;
-use App\Repository\Admin\AdministrateurRepository;
+use App\Repository\ReglesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminDashboardController extends AbstractController
@@ -31,4 +30,19 @@ class AdminDashboardController extends AbstractController
         
         return $this->render('/Administrateur/Dashboard/ListeAdministrateurs.html.twig',["administrateurs"=>$userRepository->findByRole('ROLE_ADMIN')] );
     }
+    /**
+     * @Route("/Regles", name="afficher-Regles")
+     */
+    public function Regles (ReglesRepository $reglesRepository){
+        
+        return $this->render('/Administrateur/Dashboard/Regles.html.twig',["regles"=>$reglesRepository->findAll()] );
+    }
+       /**
+     * @Route("/ListeCandidatsInactifs", name="Liste-CandidatsInactifs")
+     */
+    public function candidatsInactifs (UserRepository $userRepository, ReglesRepository $reglesRepository ){
+        
+        return $this->render('/Administrateur/Dashboard/ListeCandidatsInactifs.twig', ["candidats"=>$userRepository->findByRole('ROLE_CANDIDAT'),"Regles"=>$reglesRepository->find(1)] );
+    }
+    
 }

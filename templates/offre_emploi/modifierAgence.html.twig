@@ -9,7 +9,7 @@
 {{ form_start(form) }}
   <div class="row">
     <div class="col-md-8">{{form_row(form.Titre)}}</div>
-    <div class="col-md-8">{{form_row(form.Description)}}</div>
+    <div class="col-md-8">{{form_row(form.Description|raw)}}</div>
     <div class="col-md-8">{{form_row(form.Experience)}}</div>
     <div class="col-md-8">{{form_row(form.Emplacement)}}</div>
     <div class="col-md-8">{{form_row(form.TypeContrat)}}</div>

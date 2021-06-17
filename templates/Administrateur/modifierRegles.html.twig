@@ -1,0 +1,12 @@
+{% extends 'dashboard.html.twig' %} {% block title %}Modifier recruteur {%
+endblock %} {% block body %}
+<div class="container">
+  <h1 class="mt-4 ml-2">Modifier les Regles :</h1>
+  {{ form_start(modifierRegles) }}
+  <div class="col-6">{{ form_row(modifierRegles.duree) }}</div>
+  <div class="col-6">{{ form_row(modifierRegles.limitePostulation) }}</div>
+  {{ form_widget(modifierRegles) }}
+  <button class="ml-3 btn btn-warning mb-3">Modifier</button>
+  {{ form_end(modifierRegles) }}
+</div>
+{% endblock %}
