@@ -8,6 +8,10 @@
     top:20px;
   }
   </style>
+  <link rel="stylesheet" type="text/css" href="/public/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
+   crossorigin="anonymous"/>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-
@@ -55,7 +59,7 @@ $('.custom-file-input').on('change', function(event) {
     <meta charset="UTF-8" />
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block navbar %}
-    <nav class="navbar navbar-expand-sm navbar-dark bg-secondary mb-3">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
       <div class="container">
         <a href="#" class="navbar-brand">Jobs For you</a>
         {% if app.user %}

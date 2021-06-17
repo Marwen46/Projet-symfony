@@ -4,32 +4,26 @@
 
 {% block body %}
 <div  class="container mt-3">
-<h1>Offre : </h1>
-<dl class="row ">
-  <dt class="col-sm-3">ID</dt>
-  <dd class="col-sm-9"></span>{{offre.id}}</dd>
+<dl class="row">
   <dt class="col-sm-3">Titre</dt>
-  <dd class="col-sm-9"></span>{{offre.Titre}}</dd>
+  <dd class="col-sm-9">{{offre.Titre}}</dd>
   <dt class="col-sm-3">Description</dt>
   <dd class="col-sm-9"></span>{{offre.Description | raw}}</dd>
-  <dt class="col-sm-3">Experience</dt>
-  <dd class="col-sm-9"></span>{{offre.Experience}}</dd>
-  <dt class="col-sm-3">Emplacement</dt>
-  <dd class="col-sm-9"></span>{{offre.Emplacement}}</dd>
-  <dt class="col-sm-3">Type de Contrat</dt>
-  <dd class="col-sm-9"></span>{{offre.TypeContrat}}</dd>
-  <dt class="col-sm-3">Date d'expiration</dt>
-  <dd class="col-sm-9"></span>{{offre.DateExpiration| date("d/m/Y")}}</dd>
-  <dt class="col-sm-3">Date d'ajout de l'offre</dt>
-  <dd class="col-sm-9"></span>{{offre.createdAt| date("d/m/Y")}}</dd>
- 
-  <dt class="col-sm-3">L'état de l'offre</dt>
-  <dd class="col-sm-9" style="color: {{ offre.etat ? "green" : "red"}}"></span > {{ offre.etat ? "Disponible" : "Non disponible" }} 
-                </dd>
- 
 </dl>
-    <div class="d-flex">
-        <a href="{{ path('consulter_tous_les_offres')}}" class="btn btn-primary rounded btn-sm mt-3">retour</a>   <a href="{{ path('consulter_tous_les_offres')}}" class=" mx-2 btn btn-success rounded btn-sm mt-3">Appliquer</a>
-    <div>
-    </div>
+<dl class="row">
+    <dt class="col-sm-3">Experience</dt>
+    <dd class="col-sm-9"></span>{{offre.Experience}}</dd>
+    <dt class="col-sm-3">Emplacement</dt>
+    <dd class="col-sm-9"></span>{{offre.Emplacement}}</dd>
+    <dt class="col-sm-3">Type de Contrat</dt>
+    <dd class="col-sm-9"></span>{{offre.TypeContrat}}</dd>
+    <dt class="col-sm-3">Date d'expiration</dt>
+    <dd class="col-sm-9"></span>{{offre.DateExpiration| date("d/m/Y")}}</dd>
+    <dt class="col-sm-3">Date d'ajout de l'offre</dt>
+    <dd class="col-sm-9"></span>{{offre.createdAt| date("d/m/Y")}}</dd>
+     <div class="d-flex">
+     <a href="{{ path('consulter_tous_les_offres')}}" class="btn btn-primary rounded btn-sm mt-3">retour</a>    
+     <div>
+</dl>
+</div>
 {% endblock %}

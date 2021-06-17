@@ -5,8 +5,9 @@
  <div class="row">
   <div class="col-md-3">
     {{ form_start(form,{attr:{class:'filter'}}) }}
-     <h4>Catégories </h4>
+     <h5>Rechercher </h5>
      {{form_row(form.q)}}
+     <h5>Filtrer </h5>
      {{form_row(form.categorie)}}
     <button type="submit" class="btn btn-primary w-100">Filtrer</button>
     {{ form_end(form) }}
@@ -14,39 +15,35 @@
   <div class="col-md-9">
     {% for o in offres %}
     {% if o.etat %}
-    <div class="card mb-3" style="max-width: 540px">
+    <div class="card mb-3" style="max-width: 100%">
       <div class="row no-gutters">
-        <div class="card-body" style="background-color: rgb(240, 240, 240)">
-          <h5 class="font-weight-bold">{{ o.titre }}</h5>
-          <p
-            class="card-text"
-            style="
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              overflow: hidden;
-              width: 50rem;
-            "
-          >
-            {{ o.description |raw }}
-          </p>
-
+        <div class="card-body" style="max-width: 100%">
+          <a href="{{ path('voir_offre_en_detail',{id : o.id})}}" class="font-weight-bold text-primary"><h3>{{ o.titre }}</h3></a>
           <div>
-            <p class="card-text mb-0">
-              <small
-                class="text-muted"
-                >{{o.createdAt|date('d/m/Y',"Africa/Tunis") }}</small>
-            </p>
-              <span style="color: {{ o.etat ? "green" : "red"}}" > {{ o.etat ? "Disponible" : "non disponible" }}  </span>
+            <p class="text-muted mb-0"><i class="far fa-building mr-1"></i>Web Creative.pvt.Ltd</p>
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item mr-3">
+                                                        <p class="text-muted mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{o.emplacement}}</p>
+                                                    </li>
+
+                                                    <li class="list-inline-item">
+                                                        <p class="text-muted mb-0"><i class="far fa-clock mr-1"></i>{{o.createdAt|date('d/m/Y',"Africa/Tunis") }}</p>
+                                                    </li>
+                                                </ul>
+          
               <div class="d-flex justify-content-end">
               <a href="{{ path('voir_offre_en_detail',{id : o.id})}}" class="btn btn-primary rounded btn-sm ">Detail</a>
             </div>
           </div>
         </div>
       </div>
-      </div>
+    </div>
       {% endif %}
       {% endfor %}
    
+  <div class="pagination justify-content-center">
+    {{ knp_pagination_render(offres) }}
+  </div>
   </div>
  </div>
 </div>

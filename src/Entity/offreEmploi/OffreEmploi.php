@@ -2,6 +2,7 @@
 
 namespace App\Entity\offreEmploi;
 
+use App\Entity\Recruteur\Recruteur;
 use DateTime;
 use DateTimeInterface;
 use App\Entity\Timestamps;
@@ -65,7 +66,6 @@ class OffreEmploi
      * @JoinColumn(onDelete="CASCADE")
      */
     private $categorie;
-
    
 
     public function getId(): ?int
@@ -169,6 +169,4 @@ class OffreEmploi
 
         return $this;
     }
-
-  
 }

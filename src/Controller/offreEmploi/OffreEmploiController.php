@@ -90,12 +90,11 @@ class OffreEmploiController extends AbstractController
      */
     public function voirTous(OffreEmploiRepository $OffreEmploiRepository,PaginatorInterface $paginator,Request $request)
     { 
-       // $offres=$paginator->paginate($OffreEmploiRepository->findAll(),$request->query->getInt('page', 1),10);
         $data = new SearchData();
         $form = $this->createForm(SearchForm::class,$data); 
         $form->handleRequest($request);
-
-        $offres = $OffreEmploiRepository->findSearch($data);
+        
+        $offres=$paginator->paginate($OffreEmploiRepository->findSearch($data),$request->query->getInt('page', 1),2);
         return $this->render("offre_emploi/VoirTous.html.twig",[
             "offres"=>$offres,     
             'form' =>$form->createView()

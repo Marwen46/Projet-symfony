@@ -3,6 +3,9 @@ namespace App\Entity\Recruteur;
 
 
 
+use App\Entity\OffreEmploi\OffreEmploi;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\Recruteur\RecruteurRepository;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -33,6 +36,9 @@ class Recruteur
      * @ORM\Column(type="integer", unique=true)
      */
     private $Telephone;
+
+
+    
 
     public function getId(): ?int
     {
@@ -74,4 +80,5 @@ class Recruteur
 
         return $this;
     }
+
 }
