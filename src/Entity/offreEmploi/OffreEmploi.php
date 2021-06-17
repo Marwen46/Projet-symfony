@@ -66,9 +66,6 @@ class OffreEmploi
      * @JoinColumn(onDelete="CASCADE")
      */
     private $categorie;
-
-
-
    
 
     public function getId(): ?int
@@ -172,18 +169,4 @@ class OffreEmploi
 
         return $this;
     }
-
-    public function getRecruteur(): ?Recruteur
-    {
-        return $this->recruteur;
-    }
-
-    public function setRecruteur(?Recruteur $recruteur): self
-    {
-        $this->recruteur = $recruteur;
-
-        return $this;
-    }
-
-  
 }
