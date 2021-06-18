@@ -23,11 +23,15 @@ class SendEmailController extends AbstractController
     $acc=$AccepteesRepository->find($id);
      $message= (new TemplatedEmail())
       ->from('marwen46@gmail.com')
-      ->to('marwen.ayoub@outlook.com')
+      ->to($acc->Email)
       ->subject('accepté pour un entretien')
-      ->htmlTemplate('emails/emailTemplate.html.twig');
+      ->htmlTemplate('emails/emailTemplate.html.twig')
+      ->context([
+        'donner' => $acc
+      ])
+      ;
     $mailer->send($message);
-    return $this->render('emails/emailTemplate.html.twig');
+    return $this->render('emails/emailTemplate.html.twig',['donner'=> $acc]);
     }
 }
 
