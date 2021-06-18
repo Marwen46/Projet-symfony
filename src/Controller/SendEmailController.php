@@ -16,22 +16,26 @@ class SendEmailController extends AbstractController
 {
     
     /**
-     * @Route("/recruteur/sendEmail/id={id}&nomEntreprise={nomEntreprise}", name="send_email")
+     * @Route("/recruteur/sendEmail/", name="send_email")
      */
-    public function index(MailerInterface $mailer,AccepteesRepository $AccepteesRepository,$id,$nomEntreprise)
+    public function index(MailerInterface $mailer,AccepteesRepository $AccepteesRepository)
     {
-    $acc=$AccepteesRepository->find($id);
+      $lastmail=$AccepteesRepository->findLastInserted();
+   // $acc=$AccepteesRepository->find($id);
+    $user= $this->getUser();
+    // dd($user);
+     $email = $user->getEmail();
      $message= (new TemplatedEmail())
-      ->from('marwen46@gmail.com')
-      ->to($acc->Email)
+      ->from($email)
+      ->to($lastmail->getEmail())
       ->subject('accepté pour un entretien')
       ->htmlTemplate('emails/emailTemplate.html.twig')
       ->context([
-        'donner' => $acc
+        'donner' => $lastmail
       ])
       ;
     $mailer->send($message);
-    return $this->render('emails/emailTemplate.html.twig',['donner'=> $acc]);
+    return $this->render('emails/emailTemplate.html.twig',['donner'=> $lastmail ]);
     }
 }
 

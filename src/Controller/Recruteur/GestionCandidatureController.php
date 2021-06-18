@@ -68,8 +68,11 @@ class GestionCandidatureController extends AbstractController
         $em->persist($Acceptees);
         $em->flush();
         $res=$AccepteesRepository->findLastInserted();
-        $nomEntreprise=$this->getUser()->nom;
-        return $this->redirectToRoute('send_email',["id"=>$res,"nomEntreprise"=>$nomEntreprise]);
+        $user = $this->getUser();
+        $nomEntreprise=$user->getNom();
+        //return $this->redirectToRoute('send_email',["id"=>$res,"nomEntreprise"=>$nomEntreprise]);
+        return $this->redirectToRoute('send_email');
+
         }
         return $this->render("Recruteur/Acceptees.html.twig",[ 'form' =>$form->createView()]);
     }

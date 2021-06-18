@@ -5,7 +5,7 @@ Monsieur {{donner.nom}},<br/>
 
 A la suite de nos différents entretiens, nous avons le plaisir de vous informer que votre candidature au poste de  "{{donner.offre}}", a été retenue.
 
-Afin de procéder à une étude approfondie de votre candidature, nous souhaiterions avoir un entretien complémentaire  avec vous le {{donner.DateRendezVous}} et vous faire passer une série de tests.
+Afin de procéder à une étude approfondie de votre candidature, nous souhaiterions avoir un entretien complémentaire  avec vous le {{ donner.DateRendezVous|date('m/d/Y')}} et vous faire passer une série de tests.
 
 Nous nous tenons à votre disposition  pour toutes précisions qu’il vous plairait de nous demander.
 
@@ -13,5 +13,9 @@ Nous vous remercions de bien vouloir prendre contact avec notre service recrutem
 
 Cordialement,
 </p>
+<a
+              href="{{ path('offre_emploi') }}"
+              class="btn btn-primary btn-sm"
+              >Retour</a>
 </div>
 {% endblock %}
