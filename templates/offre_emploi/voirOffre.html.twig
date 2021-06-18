@@ -30,14 +30,11 @@
                 inactive
                 {% endif %}
                 </dd>
-                <pre>
-                    {{ dump(offre) }}
-                </pre>
- 
+
 </dl> 
     <div class="d-flex">
         <a href="{{ path('ajouter_offre')}}" class="btn btn-success rounded btn-sm mt-3">retour</a>
-        <a href="{{ path('ajouter_candidature',{o})}}" class="btn btn-primary rounded btn-sm mt-3">postuler</a>
+{# <a href="{{ path('ajouter_candidature',{rec_id :id : offre.id})}}" class="btn btn-primary rounded btn-sm mt-3">postuler</a> #}
     <div>
     </div>
 {% endblock %}
