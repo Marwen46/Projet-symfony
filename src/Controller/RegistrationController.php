@@ -37,6 +37,7 @@ class RegistrationController extends AbstractController
             $user->setRoles(["ROLE_CANDIDAT"]);
             $user->setNom($form->get('Nom')->getData());
             $user->setPrenom($form->get('Prenom')->getData());
+            $user->setLastLogin(new \DateTime());
             $user->setAge($form->get('Age')->getData());
             $user->setAdresse($form->get('Adresse')->getData());
             $user->setTelephone($form->get('Telephone')->getData());

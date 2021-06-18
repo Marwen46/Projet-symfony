@@ -68,7 +68,7 @@ $('.custom-file-input').on('change', function(event) {
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 You are logged in as {{ app.user.username }},
-                <a href="{{ path('app_logout') }}">Logout</a>
+                <a class="btn btn-dark btn-sm" href="{{ path('app_logout') }}">Logout</a>
               </li>
             </ul>
           </div>

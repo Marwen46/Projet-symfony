@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %} 
+{% extends 'dashboard.html.twig' %} 
 {% block title %}Offre Emploi{% endblock %} 
 {% block body %}
 <div class="container">
@@ -18,7 +18,7 @@
     <div class="card mb-3" style="max-width: 100%">
       <div class="row no-gutters">
         <div class="card-body" style="max-width: 100%">
-          <a href="{{ path('voir_offre_en_detail',{id : o.id})}}" class="font-weight-bold text-primary"><h3>{{ o.titre }}</h3></a>
+          <a href="{{ path('voir_offre_en_detail',{id : o.id})}}" class="font-weight-bold text-primary"><h4>{{ o.titre }}</h4></a>
           <div>
             <p class="text-muted mb-0"><i class="far fa-building mr-1"></i>{{o.NomEntrprise}}</p>
                                                 <ul class="list-inline mb-0">

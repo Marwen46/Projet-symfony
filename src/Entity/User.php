@@ -71,6 +71,21 @@ class User implements UserInterface
      */
     private $age;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $lastLogin;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $postulationRestant;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $Inactif;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -108,6 +123,12 @@ class User implements UserInterface
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
+    }
+    public function getRole(): string
+    {
+        $roles = $this->roles;
+
+        return ($roles[0]);
     }
 
     public function setRoles(array $roles): self
@@ -223,6 +244,42 @@ class User implements UserInterface
     public function setAge(?int $age): self
     {
         $this->age = $age;
+
+        return $this;
+    }
+
+    public function getLastLogin(): ?\DateTimeInterface
+    {
+        return $this->lastLogin;
+    }
+
+    public function setLastLogin(?\DateTimeInterface $lastLogin): self
+    {
+        $this->lastLogin = $lastLogin;
+
+        return $this;
+    }
+
+    public function getPostulationRestant(): ?int
+    {
+        return $this->postulationRestant;
+    }
+
+    public function setPostulationRestant(?int $postulationRestant): self
+    {
+        $this->postulationRestant = $postulationRestant;
+
+        return $this;
+    }
+
+    public function getInactif(): ?bool
+    {
+        return $this->Inactif;
+    }
+
+    public function setInactif(?bool $Inactif): self
+    {
+        $this->Inactif = $Inactif;
 
         return $this;
     }

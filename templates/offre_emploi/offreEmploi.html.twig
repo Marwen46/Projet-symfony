@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
 {% block title %}Offre Emploi{% endblock %}
 
@@ -8,7 +8,7 @@
  <div>
   <div class="container-fluid">
   <h2 class="my-5 font-weight-bold" >Listes des offres d'emplois :</h2>
-  <a href="{{ path('ajouter_offre') }}" class="btn btn-link">ajouter une offre</a>
+  <a href="{{ path('ajouter_offre') }}" class="btn btn-primary btn-sm mb-1"><i class="fas fa-plus"></i> ajouter une offre</a>
 
     <table class="table">
         <thead class="thead-dark">
@@ -34,7 +34,7 @@
                 <td class="text-nowrap">{{o.Emplacement}}</td>
                 <td class="text-nowrap">{{o.TypeContrat}}</td>
                 <td class="text-nowrap">{{o.DateExpiration | date("d/m/Y")}}</td>
-                <td class="text-nowrap">{{o.createdAt | date("d/m/Y","Africa/Tunis")}}</td>
+                <td class="text-nowrap">{{o.createdAt | date("d/m/Y")}}</td>
                 <td class="text-nowrap">{% if o.etat == true %}
                                         active
                                         {% else %}

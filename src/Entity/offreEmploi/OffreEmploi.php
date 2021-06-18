@@ -170,8 +170,7 @@ class OffreEmploi
 
     public function setDateExpiration(\DateTimeInterface $DateExpiration): self
     {
-        $this->DateExpiration = $DateExpiration;
-
+        $this->DateExpiration = $DateExpiration;   
         return $this;
     }
 

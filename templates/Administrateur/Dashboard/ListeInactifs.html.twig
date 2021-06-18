@@ -14,10 +14,7 @@ GestionComptesController!{% endblock %} {% block body %}
 </style>
 
 <div class="container">
-  <h2 class="my-1 font-weight-bold">Listes des candidats :</h2>
-     <a href="{{ path('ajouter_candidat') }}" class="btn btn-sm btn-primary mb-1 pl-0"
-      ><i class="fas fa-plus">  </i> Ajouter un candidat</a
-    >
+  <h2 class="my-1 font-weight-bold">Liste des candidats Inactifs:</h2>
   {% if candidats %}
   <table class="table">
     <thead class="thead-dark">
@@ -33,6 +30,7 @@ GestionComptesController!{% endblock %} {% block body %}
 
     <tbody>
       {% for v in candidats %}
+      {% if v.Inactif %}
       <tr>
         <td class="text-nowrap">{{ v.id }}</td>
         <td class="text-nowrap">{{ v.Nom }}</td>
@@ -41,25 +39,13 @@ GestionComptesController!{% endblock %} {% block body %}
         <td class="text-nowrap">{{ v.Email }}</td>
         <td class="d-flex">
           <a
-            href="{{ path('Accueil_Candidat', { id: v.id }) }}"
-            class="btn btn-primary btn-sm"
-            ><i class="fas fa-search-plus"></i></a
+            href="{{ path('supprimer_candidat', { id: v.id }) }}"
+            class="btn btn-link btn-sm"
+            >supprimer</a
           >
-            &nbsp;
-            <a
-              href="{{ path('modifier_candidatpadmin', { id: v.id }) }}"
-              class="btn btn-warning btn-sm"
-              ><i class="fas fa-edit"></i></a
-            >
-            &nbsp;
-            <a
-              href="{{ path('supprimer_candidat', { id: v.id }) }}"
-              class="btn btn-sm btn-danger"
-              ><i class="fas fa-trash-alt"></i></a
-            >
         </td>
       </tr>
-
+      {% endif %}
       {% endfor %} {% else %}
       <h3>pas des candidats trouvée</h3>
       {% endif %}
