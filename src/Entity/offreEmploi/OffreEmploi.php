@@ -27,6 +27,14 @@ class OffreEmploi
     private $id;
 
     /**
+     * @ORM\Column(type="integer", length=255)
+     */
+    private $RecruteurId;
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $NomEntrprise;
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $Titre;
@@ -72,6 +80,17 @@ class OffreEmploi
     {
         return $this->id;
     }
+    public function RecruteurId(): ?int
+    {
+        return $this->RecruteurId;
+    }
+
+    public function setRecruteurId(int $RecId): self
+    {
+        $this->RecruteurId = $RecId;
+
+        return $this;
+    }
 
     public function getTitre(): ?string
     {
@@ -81,6 +100,17 @@ class OffreEmploi
     public function setTitre(string $Titre): self
     {
         $this->Titre = $Titre;
+
+        return $this;
+    }
+    public function getNomEntrprise(): ?string
+    {
+        return $this->NomEntrprise;
+    }
+
+    public function setNomEntrprise(string $NomEntrprise): self
+    {
+        $this->NomEntrprise = $NomEntrprise;
 
         return $this;
     }
