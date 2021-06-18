@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CategorieController extends AbstractController
 {
     /**
-     * @Route("/categorie", name="categorie")
+     * @Route("/recruteur/categorie", name="categorie")
      */
     public function index(CategorieRepository $categorieRepository): Response
     {   
@@ -21,7 +21,7 @@ class CategorieController extends AbstractController
         ]);
     }
      /**
-     * @Route("/categorie/ajouter", name="ajouter_categorie")
+     * @Route("/recruteur/categorie/ajouter", name="ajouter_categorie")
      */
     public function ajouter(Request $request ): Response
     {   $categorie =new Categorie();
@@ -38,7 +38,7 @@ class CategorieController extends AbstractController
     }
 
      /**
-     * @Route("/Categorie/consulter/{id}",name="voirCategorie");
+     * @Route("/recruteur/Categorie/consulter/{id}",name="voirCategorie");
      */
     public function voir($id): Response
     {
@@ -51,7 +51,7 @@ class CategorieController extends AbstractController
    
 
     /**
-    * @Route("/categorie/modifier/{id}",name="modifierCategorie");
+    * @Route("/recruteur/categorie/modifier/{id}",name="modifierCategorie");
     */
     public function modifier(int $id,Request $request): Response
     {   $repo = $this->getDoctrine()->getRepository(Categorie::class);
@@ -68,7 +68,7 @@ class CategorieController extends AbstractController
         return $this->render('/Categorie/modifierCategorie.html.twig',['form'=> $form->createView()]);
     } 
         /**
-     * @Route("/categorie/supprimer/{id}",name="supprimerCategorie");
+     * @Route("/recruteur/categorie/supprimer/{id}",name="supprimerCategorie");
      */
     public function supprimer(int $id): Response
     {

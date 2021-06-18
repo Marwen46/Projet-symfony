@@ -15,7 +15,7 @@ class SendEmailController extends AbstractController
 {
     
     /**
-     * @Route("/sendEmail", name="send_email")
+     * @Route("/recruteur/sendEmail", name="send_email")
      */
     public function index(MailerInterface $mailer)
     {

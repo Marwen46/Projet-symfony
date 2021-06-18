@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class OffreEmploiController extends AbstractController
 {
     /**
-     * @Route("/offre-emploi", name="offre_emploi")
+     * @Route("/recruteur/offre-emploi", name="offre_emploi")
      */
     public function index(OffreEmploiRepository $offreEmploiRepository ):Response
     {
@@ -24,7 +24,7 @@ class OffreEmploiController extends AbstractController
         return $this->render('offre_emploi/offreEmploi.html.twig',['offres'=> $offers]);
     }
     /**
-     * @Route("/offre-emploi/ajouter", name="ajouter_offre")
+     * @Route("/recruteur/offre-emploi/ajouter", name="ajouter_offre")
      */
     public function ajouterOffre(Request $request):Response
     {
@@ -44,7 +44,7 @@ class OffreEmploiController extends AbstractController
         
     }
      /**
-     * @Route("/offre-emploi/consulter/{id}",name="voir_offre")
+     * @Route("/recruteur/offre-emploi/consulter/{id}",name="voir_offre")
      */
     public function voir($id): Response
     {
@@ -55,7 +55,7 @@ class OffreEmploiController extends AbstractController
         ]);
     }
        /**
-     * @Route("/offre-emploi/modifier/{id}",name="modifier_offre")
+     * @Route("/recruteur/offre-emploi/modifier/{id}",name="modifier_offre")
      */
     public function modifier(int $id,Request $request): Response
     {   $repo = $this->getDoctrine()->getRepository(OffreEmploi::class);
@@ -72,7 +72,7 @@ class OffreEmploiController extends AbstractController
         return $this->render('offre_emploi/modifierAgence.html.twig',['form'=> $form->createView()]);
     } 
      /**
-     * @Route("/offre-emploi/supprimer/{id}",name="supprimer_offre")
+     * @Route("/recruteur/offre-emploi/supprimer/{id}",name="supprimer_offre")
      */
     public function supprimer(int $id): Response
     {
@@ -90,7 +90,7 @@ class OffreEmploiController extends AbstractController
     
     }
      /**
-     * @Route("/offre-emploi/consulterTous",name="consulter_tous_les_offres") 
+     * @Route("/candidat/offre-emploi/consulterTous",name="consulter_tous_les_offres") 
      */
     public function voirTous(OffreEmploiRepository $OffreEmploiRepository,PaginatorInterface $paginator,Request $request)
     { 
@@ -106,7 +106,7 @@ class OffreEmploiController extends AbstractController
     }
 
          /**
-     * @Route("/offre-emploi/consulterDetail/{id}",name="voir_offre_en_detail")
+     * @Route("/candidat/offre-emploi/consulterDetail/{id}",name="voir_offre_en_detail")
      */
     public function voirDetails($id): Response
     {
