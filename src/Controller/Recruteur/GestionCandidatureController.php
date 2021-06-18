@@ -25,7 +25,7 @@ class GestionCandidatureController extends AbstractController
     }
 
     /**
-     * @Route("/afficherTousCandidature", name="afficher_tousCandidature")
+     * @Route("/recruteur/afficherTousCandidature", name="afficher_tousCandidature")
      */
     public function afficherTout(CandidatureRepository  $CandidatureRepository ,OffreEmploiRepository $OffreEmploiRepository)
     {   
@@ -37,13 +37,13 @@ class GestionCandidatureController extends AbstractController
     }
 
     /**
-     * @Route("/telecharger_Cv/{filename}", name="telecharger_candidature_cv")
+     * @Route("/recruteur/telecharger_Cv/{filename}", name="telecharger_candidature_cv")
      */
     public function telecharger_cv($filename){
         return $this->fileDownloader->downloadFile("uploads/CV/$filename");
     }
     /**
-     *@Route ("/supprimerCandidature/{id}",name="supprimer_candidature")
+     *@Route ("/recruteur/supprimerCandidature/{id}",name="supprimer_candidature")
      */
     public function supprimerCandidature(CandidatureRepository $CandidatureRepository, EntityManagerInterface $em,$id){
         $Candidature =$CandidatureRepository->find($id);
@@ -52,7 +52,7 @@ class GestionCandidatureController extends AbstractController
         return $this->redirectToRoute("afficher_tousCandidature");
     }
     /**
-     *@Route ("fixerRrendezvous/Prenom={Prenom}&Nom={Nom}&Email={Email}&Offre={Offre}",name="fixer-rendez-vous")
+     *@Route ("/recruteurfixerRrendezvous/Prenom={Prenom}&Nom={Nom}&Email={Email}&Offre={Offre}",name="fixer-rendez-vous")
      */
     public function fixerRendezvous(Request $request,CandidatureRepository $CandidatureRepository,EntityManagerInterface $em,$Prenom,$Nom,$Email,$Offre){
         $Acceptees=new Acceptees();

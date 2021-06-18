@@ -76,7 +76,7 @@ class GestionComptesAdminController extends AbstractController
     }
     
     /**
-     * @Route("/regles/{id}", name="modifier_Regles")
+     * @Route("/admin/regles/{id}", name="modifier_Regles")
      */
     public function modifierRegles(Request $request,ReglesRepository $ReglesRepository,$id )
     {

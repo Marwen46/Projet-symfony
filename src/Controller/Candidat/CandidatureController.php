@@ -17,7 +17,7 @@ class CandidatureController extends AbstractController
 {
 
     /**
-     * @Route("/ajouterCandidature/recId={rec_id}&offre={offre_id}", name="ajouter_candidature")
+     * @Route("/candidat/ajouterCandidature/recId={rec_id}&offre={offre_id}", name="ajouter_candidature")
      */
     public function ajouter(Request $request,EntityManagerInterface $em,$rec_id ,$offre_id)
     
@@ -47,7 +47,10 @@ class CandidatureController extends AbstractController
                     $Candidature->setPrenom($this->getuser()->getPrenom());
                     $Candidature->setTelephone($this->getuser()->getTelephone());
                     $Candidature->setAge($this->getuser()->getAge());
+                    $user = $this->getUser();
+                    $user->setPostulationRestant($user->getPostulationRestant()-1);
                     $em->persist($Candidature);
+                    $em->persist($user);
                     $em->flush();
                     return $this->redirectToRoute("consulter_tous_les_offres");
                     
