@@ -12,7 +12,7 @@
 
 <div class="container">
   <h2 class="my-5 font-weight-bold" >Listes des Categories :</h2>
-  <a href="{{ path('ajouter_categorie') }}" class="btn btn-link ">ajouter Categorie</a>
+  <a href="{{ path('ajouter_categorie') }}" class="btn btn-primary btn-sm mb-1 "><i class="fas fa-plus"></i> ajouter Categorie</a>
   {% if categories %}
     <table class="table">
         <thead class="thead-dark">
@@ -29,9 +29,9 @@
                 <td class="text-nowrap">{{ cat.id }}</td>
                 <td class="text-nowrap">{{ cat.nomCategorie }}</td>
                 <td class="d-flex">
-                    <a href="{{ path('voirCategorie', {'id': cat.id}) }}" class="btn btn-link btn-sm">afficher</a> |
-                    <a href="{{ path('modifierCategorie', {'id': cat.id}) }}" class="btn btn-sm btn-link">modifier</a> |
-                    <a href="{{ path('supprimerCategorie', {'id': cat.id}) }}" class="btn btn-sm btn-link">supprimer</a>
+                    <a href="{{ path('voirCategorie', {'id': cat.id}) }}" class="btn btn-primary btn-sm"><i class="fas fa-search-plus"></i></a>&nbsp; 
+                    <a href="{{ path('modifierCategorie', {'id': cat.id}) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>&nbsp;
+                    <a href="{{ path('supprimerCategorie', {'id': cat.id}) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {% endfor %}
