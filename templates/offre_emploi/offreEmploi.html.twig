@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
 {% block title %}Offre Emploi{% endblock %}
 
@@ -31,7 +31,7 @@
             <tr>
                 <td class="text-nowrap">{{o.id}}</td>
                 <td class="text-nowrap">{{o.Titre}}</td>
-                <td class="text-nowrap">{{o.Description|raw|length > 30 ? o.Description|raw|slice(0, 30) ~ '...' : o.Description|raw }}</td>
+                <td class="text-nowrap">{{(o.Description|raw)|length > 30 ? (o.Description|raw)|slice(0, 30) ~ '...' : o.Description|raw }}</td>
                 <td class="text-nowrap">{{o.Experience}}</td>
                 <td class="text-nowrap">{{o.Emplacement}}</td>
                 <td class="text-nowrap">{{o.TypeContrat}}</td>

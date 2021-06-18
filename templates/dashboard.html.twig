@@ -107,7 +107,28 @@
         }
       }
     </style>
-
+ <link rel="stylesheet" type="text/css" href="/public/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
+   crossorigin="anonymous"/>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-
+        J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-
+        Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-
+        wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     {% block javascripts %}
     <script>
@@ -163,10 +184,21 @@
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
         >&times;</a
       >
+      {% if app.user.getRole() =="ROLE_ADMIN" %}
       <a href="{{ path('liste-Recruteurs') }}">Recruteurs</a>
       <a href="{{ path('Liste-Administrateurs') }}">Administrateurs</a>
       <a href="{{ path('Liste-Candidats') }}">Candidats</a>
       <a href="{{ path('afficher-Regles') }}">Regles</a>
+      <a href="{{ path('Liste-CandidatsInactifs') }}">Candidats Inactifs</a>
+      {% endif %}
+       {% if app.user.getRole() =="ROLE_CANDIDAT" %}
+      <a href="{{ path('modifier_candidat',{id: app.user.id}) }}">Modifier Profil</a>
+      <a href="{{ path('consulter_tous_les_offres') }}">Offres d'emploi</a>
+      {% endif %}
+      {% if app.user.getRole() =="ROLE_RECRUTEUR" %}
+      <a href="{{ path('afficher_tousCandidature') }}">Candidatures</a>
+      <a href="{{ path('offre_emploi') }}">Mes Offres d'emploi</a>
+      {% endif %}
     </div>
 
     <div id="main" style="margin-left: 250px">

@@ -14,10 +14,7 @@ GestionComptesController!{% endblock %} {% block body %}
 </style>
 
 <div class="container">
-  <h2 class="my-1 font-weight-bold">Listes des candidats :</h2>
-     <a href="{{ path('ajouter_candidat') }}" class="btn btn-link pl-0"
-      >Ajouter un candidat</a
-    >
+  <h2 class="my-1 font-weight-bold">Liste des candidats Inactifs:</h2>
   {% if candidats %}
   <table class="table">
     <thead class="thead-dark">
@@ -33,9 +30,7 @@ GestionComptesController!{% endblock %} {% block body %}
 
     <tbody>
       {% for v in candidats %}
-      {%  diff = date_diff(new \DateTime(), v.lastLogin);
-            cond = - (int) diff -> format("%R%a");%}
-      {% if (int) cond < (int) Regles.duree  %}
+      {% if v.Inactif %}
       <tr>
         <td class="text-nowrap">{{ v.id }}</td>
         <td class="text-nowrap">{{ v.Nom }}</td>

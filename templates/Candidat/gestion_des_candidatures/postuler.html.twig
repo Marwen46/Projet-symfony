@@ -8,8 +8,9 @@
   <div class="col-6">{{ form_row(form.CvFile) }}</div> 
   {{ form_widget(form) }}
  
-  
+  {% if app.user.postulationRestant > 0 %}
   <button class="ml-3 btn btn-primary mb-3">Postuler</button>
+  {% endif %}
   {{ form_end(form) }}
 </div>
 {% endblock %}

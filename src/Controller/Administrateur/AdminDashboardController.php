@@ -38,11 +38,10 @@ class AdminDashboardController extends AbstractController
         return $this->render('/Administrateur/Dashboard/Regles.html.twig',["regles"=>$reglesRepository->findAll()] );
     }
        /**
-     * @Route("/ListeCandidatsInactifs", name="Liste-CandidatsInactifs")
+     * @Route("/ListeInactifs", name="Liste-CandidatsInactifs")
      */
-    public function candidatsInactifs (UserRepository $userRepository, ReglesRepository $reglesRepository ){
-        
-        return $this->render('/Administrateur/Dashboard/ListeCandidatsInactifs.twig', ["candidats"=>$userRepository->findByRole('ROLE_CANDIDAT'),"Regles"=>$reglesRepository->find(1)] );
+    public function candidatsInactifs (UserRepository $userRepository){
+        return $this->render('/Administrateur/Dashboard/ListeInactifs.html.twig', ["candidats"=>$userRepository->findByRole('ROLE_CANDIDAT')] );
     }
     
 }
