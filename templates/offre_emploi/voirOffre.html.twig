@@ -11,7 +11,7 @@
   <dt class="col-sm-3">Titre</dt>
   <dd class="col-sm-9"></span>{{offre.Titre}}</dd>
   <dt class="col-sm-3">Description</dt>
-  <dd class="col-sm-9"></span>{{offre.Description}}</dd>
+  <dd class="col-sm-9"></span>{{offre.Description|raw}}</dd>
   <dt class="col-sm-3">Experience</dt>
   <dd class="col-sm-9"></span>{{offre.Experience}}</dd>
   <dt class="col-sm-3">Emplacement</dt>
@@ -30,10 +30,14 @@
                 inactive
                 {% endif %}
                 </dd>
+                <pre>
+                    {{ dump(offre) }}
+                </pre>
  
 </dl> 
     <div class="d-flex">
-        <a href="{{ path('ajouter_offre')}}" class="btn btn-primary rounded btn-sm mt-3">retour</a>
+        <a href="{{ path('ajouter_offre')}}" class="btn btn-success rounded btn-sm mt-3">retour</a>
+        <a href="{{ path('ajouter_candidature',{o})}}" class="btn btn-primary rounded btn-sm mt-3">postuler</a>
     <div>
     </div>
 {% endblock %}

@@ -39,7 +39,18 @@ class Candidature
      * @ORM\Column(type="integer")
      */
     private $CandidatId;
-
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Recruteur_id;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Offre_id;
+    /**
+    * @ORM\Column(type="string", length=180, unique=true)
+    */
+    private $email;
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -120,6 +131,39 @@ class Candidature
     public function setCandidatId(int $CandidatId): self
     {
         $this->CandidatId = $CandidatId;
+
+        return $this;
+    }
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+    public function getRecruteur_id(): ?int
+    {
+        return $this->Recruteur_id;
+    }
+
+    public function setRecruteur_id(int $Recruteur_id): self
+    {
+        $this->Recruteur_id = $Recruteur_id;
+
+        return $this;
+    }
+    public function getOffre_id(): ?int
+    {
+        return $this->Offre_id;
+    }
+
+    public function setOffre_id(int $Offre_id): self
+    {
+        $this->Offre_id = $Offre_id;
 
         return $this;
     }

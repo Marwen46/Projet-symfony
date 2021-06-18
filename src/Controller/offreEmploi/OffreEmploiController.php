@@ -5,6 +5,7 @@ use App\Data\SearchData;
 use App\Form\OffreEmploiType;
 use App\Entity\offreEmploi\OffreEmploi;
 use App\Form\SearchForm;
+use App\Repository\Candidat\CandidatureRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,9 +18,10 @@ class OffreEmploiController extends AbstractController
     /**
      * @Route("/offre-emploi", name="offre_emploi")
      */
-    public function index(OffreEmploiRepository $offreEmploiRepository):Response
+    public function index(OffreEmploiRepository $offreEmploiRepository ):Response
     {
-        return $this->render('offre_emploi/offreEmploi.html.twig',['offres'=> $offreEmploiRepository->findAll()]);
+        $offers=$offreEmploiRepository->findBy(["RecruteurId"=>$this->getuser()->getId()]);
+        return $this->render('offre_emploi/offreEmploi.html.twig',['offres'=> $offers]);
     }
     /**
      * @Route("/offre-emploi/ajouter", name="ajouter_offre")
@@ -30,6 +32,8 @@ class OffreEmploiController extends AbstractController
             $form = $this->createForm(OffreEmploiType::class,$offre);
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
+                $offre->setRecruteurId($this->getuser()->getId());
+                $offre->setNomEntrprise($this->getuser()->getNom());
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($offre);
                 $em->flush();

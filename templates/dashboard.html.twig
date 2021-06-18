@@ -43,7 +43,6 @@
       .sidebar {
         height: 100%; /* 100% Full-height */
         width: 0; /* 0 width - change this with JavaScript */
-        position: fixed; /* Stay in place */
         z-index: 1; /* Stay on top */
         top: 0;
         left: 0;
@@ -159,18 +158,18 @@
   </head>
   <body>
     {% block sidebar %}
-    <div id="mySidebar" class="sidebar" style="margin-top: 56px; width: 250px">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-        >&times;</a
-      >
-      <a href="{{ path('liste-Recruteurs') }}">Recruteurs</a>
-      <a href="{{ path('Liste-Administrateurs') }}">Administrateurs</a>
-      <a href="{{ path('Liste-Candidats') }}">Candidats</a>
-    </div>
-
-    <div id="main" style="margin-left: 250px">
-      {% block body %} {% endblock %}
-    </div>
+      <div id="mySidebar" class="sidebar" style="margin-top: 56px; width: 250px">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="{{ path('liste-Recruteurs') }}">Recruteurs</a>
+        <a href="{{ path('Liste-Administrateurs') }}">Administrateurs</a>
+        <a href="{{ path('Liste-Candidats') }}">Candidats</a>
+      </div>
+  
+      <div id="main" style="margin-left: 250px">
+        {% block body %} {% endblock %}
+      </div>
     {% endblock %}
   </body>
 </html>

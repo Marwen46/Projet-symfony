@@ -13,9 +13,8 @@
     <table class="table">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Id</th>
+                <th scope="col">#</th>
                 <th scope="col">Titre</th>
-                <th scope="col">Description </th>
                 <th scope="col">Experience</th>
                 <th scope="col">Emplacement</th>
                 <th scope="col text-nowrap">Type de Contrat</th>
@@ -29,9 +28,8 @@
         <tbody>
             {% for o in offres %}
             <tr>
-                <td class="text-nowrap">{{o.id}}</td>
+                <td class="text-nowrap">{{loop.index}}</td>
                 <td class="text-nowrap">{{o.Titre}}</td>
-                <td class="text-nowrap">{{o.Description|raw|length > 30 ? o.Description|slice(0, 30) ~ '...' : o.Description }}</td>
                 <td class="text-nowrap">{{o.Experience}}</td>
                 <td class="text-nowrap">{{o.Emplacement}}</td>
                 <td class="text-nowrap">{{o.TypeContrat}}</td>

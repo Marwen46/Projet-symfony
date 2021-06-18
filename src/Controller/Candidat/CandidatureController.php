@@ -17,9 +17,9 @@ class CandidatureController extends AbstractController
 {
 
     /**
-     * @Route("/ajouterCandidature", name="ajouter_candidature")
+     * @Route("/ajouterCandidature/recId={rec_id}&offre={offre_id}", name="ajouter_candidature")
      */
-    public function ajouter(Request $request,EntityManagerInterface $em )
+    public function ajouter(Request $request,EntityManagerInterface $em,$rec_id ,$offre_id)
     
     {   
         $slugify = new Slugify();
@@ -40,13 +40,16 @@ class CandidatureController extends AbstractController
                     );
                     $Candidature->setCvFilename($newFilename);
                     $Candidature->setCandidatId($this->getuser()->getId());
+                    $Candidature->setRecruteur_id($rec_id);
+                    $Candidature->setEmail($this->getuser()->getEmail());
+                    $Candidature->setOffre_id($offre_id);
                     $Candidature->setNom($this->getuser()->getNom());
                     $Candidature->setPrenom($this->getuser()->getPrenom());
                     $Candidature->setTelephone($this->getuser()->getTelephone());
                     $Candidature->setAge($this->getuser()->getAge());
                     $em->persist($Candidature);
                     $em->flush();
-                    return $this->redirectToRoute("ajouter_candidature");
+                    return $this->redirectToRoute("consulter_tous_les_offres");
                     
                     }
         

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+
+{% block body %}
+<div class="container">
+<h1>Selectionner une date pour le rendez-vous : </h1>
+{{ form_start(form) }}
+  <div class="row">
+  </div>
+{{ form_widget(form) }}
+<button class="btn btn-primary rounded btn-md" >créer</button>
+{{ form_end(form) }}
+  </div>
+{% endblock %}
