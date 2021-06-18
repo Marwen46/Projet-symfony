@@ -14,7 +14,7 @@ GestionComptesController!{% endblock %} {% block body %}
 </style>
 
 <div class="container">
-  <h2 class="my-1 font-weight-bold">Les Regles:</h2>
+  <h2 class="my-1 font-weight-bold">Les Régles:</h2>
   {% if regles %}
   <table class="table">
     <thead class="thead-dark">
@@ -36,8 +36,8 @@ GestionComptesController!{% endblock %} {% block body %}
           
             <a
               href="{{ path('modifier_Regles', { id: v.id }) }}"
-              class="btn btn-link btn-sm"
-              >modifier</a
+              class="btn btn-primary btn-sm"
+              ><i class="fas fa-edit"></i></a
             >
         </td>
       </tr>

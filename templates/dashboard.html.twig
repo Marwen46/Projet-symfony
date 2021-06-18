@@ -13,6 +13,9 @@
         Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
       crossorigin="anonymous"
     ></script>
+      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
+   crossorigin="anonymous"/>
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
       integrity="sha384-
@@ -159,7 +162,7 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 You are logged in as {{ app.user.username }},
-                <a href="{{ path('app_logout') }}">Logout</a>
+                <a class=" btn  btn-sm btn-dark" href="{{ path('app_logout') }}">Logout</a>
               </li>
             </ul>
           </div>

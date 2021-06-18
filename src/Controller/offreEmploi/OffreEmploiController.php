@@ -94,7 +94,7 @@ class OffreEmploiController extends AbstractController
         $form = $this->createForm(SearchForm::class,$data); 
         $form->handleRequest($request);
         
-        $offres=$paginator->paginate($OffreEmploiRepository->findSearch($data),$request->query->getInt('page', 1),2);
+        $offres=$paginator->paginate($OffreEmploiRepository->findSearch($data),$request->query->getInt('page', 1),3);
         return $this->render("offre_emploi/VoirTous.html.twig",[
             "offres"=>$offres,     
             'form' =>$form->createView()
