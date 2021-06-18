@@ -27,18 +27,21 @@ class SecurityController extends AbstractController
             $cond = - (int) $diff->format("%R%a");
             $em= $this->getDoctrine()->getManager();
         if((int) $cond< (int) $Regles->getDuree()){
+            $user->setInactif(0);
             $user->setLastLogin(new \DateTime());
-            $user->setPostulationRestant($Regles->getLimitePostulation());
+            if($cond >0 ){
+                $user->setPostulationRestant($Regles->getLimitePostulation());
+            }
            $em->persist($user);
            $em->flush();
             return $this->redirectToRoute('Accueil_Candidat');
             }
             else
             {
-                $em->remove($user);
+                $user->setInactif(1);
+                $em->persist($user);
                 $em->flush();
-                $this->logout();
-                //return $this->redirectToRoute('app_register');
+                return $this->redirectToRoute('app_logout');
                 
                 
             }
