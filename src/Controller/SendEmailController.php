@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\Mime\Email;
 use App\Entity\offreEmploi\OffreEmploi;
+use App\Repository\AccepteesRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,11 +16,11 @@ class SendEmailController extends AbstractController
 {
     
     /**
-     * @Route("/recruteur/sendEmail", name="send_email")
+     * @Route("/recruteur/sendEmail/id={id}&nomEntreprise={nomEntreprise}", name="send_email")
      */
-    public function index(MailerInterface $mailer)
+    public function index(MailerInterface $mailer,AccepteesRepository $AccepteesRepository,$id,$nomEntreprise)
     {
-       
+    $acc=$AccepteesRepository->find($id);
      $message= (new TemplatedEmail())
       ->from('marwen46@gmail.com')
       ->to('marwen.ayoub@outlook.com')

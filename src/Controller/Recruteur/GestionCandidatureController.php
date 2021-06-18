@@ -4,6 +4,7 @@ namespace App\Controller\Recruteur;
 use App\Entity\Acceptees;
 use App\Form\AccepteesType;
 use App\Entity\Candidat\Candidature;
+use App\Repository\AccepteesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,7 +55,7 @@ class GestionCandidatureController extends AbstractController
     /**
      *@Route ("/recruteurfixerRrendezvous/Prenom={Prenom}&Nom={Nom}&Email={Email}&Offre={Offre}",name="fixer-rendez-vous")
      */
-    public function fixerRendezvous(Request $request,CandidatureRepository $CandidatureRepository,EntityManagerInterface $em,$Prenom,$Nom,$Email,$Offre){
+    public function fixerRendezvous(Request $request,AccepteesRepository $AccepteesRepository,EntityManagerInterface $em,$Prenom,$Nom,$Email,$Offre){
         $Acceptees=new Acceptees();
         $form = $this->createForm(AccepteesType::class);
         $form->handleRequest($request);
@@ -66,6 +67,9 @@ class GestionCandidatureController extends AbstractController
             $Acceptees=$Acceptees->setOffre($Offre);
         $em->persist($Acceptees);
         $em->flush();
+        $res=$AccepteesRepository->findLastInserted();
+        $nomEntreprise=$this->getUser()->nom;
+        return $this->redirectToRoute('send_email',["id"=>$res,"nomEntreprise"=>$nomEntreprise]);
         }
         return $this->render("Recruteur/Acceptees.html.twig",[ 'form' =>$form->createView()]);
     }

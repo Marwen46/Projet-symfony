@@ -19,6 +19,15 @@ class AccepteesRepository extends ServiceEntityRepository
         parent::__construct($registry, Acceptees::class);
     }
 
+    public function findLastInserted()
+{
+    return $this
+        ->createQueryBuilder("e")
+        ->orderBy("e.id", "DESC")
+        ->setMaxResults(1)
+        ->getQuery()
+        ->getOneOrNullResult();
+}
     // /**
     //  * @return Acceptees[] Returns an array of Acceptees objects
     //  */
