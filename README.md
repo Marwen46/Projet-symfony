@@ -1,6 +1,6 @@
 <h1 align="center">
   <br/>
-  <img src="./public/Campi.png" alt="IsammLabs" width="260"/></a>
+  <img src="./jobs.png" alt="IsammLabs" width="130"/></a>
   <h4 align="center">A job portal web app built with <a href="https://symfony.com/" target="_blank">Symfony</a>.</h4>
   <br/>
 </h1>
@@ -9,7 +9,7 @@
 
 ![Express](https://img.shields.io/badge/Symfony-4.4.1-orange)
 ![Current Version](https://img.shields.io/badge/version-v1.0-blue)
-![GitHub contributors](https://img.shields.io/github/contributors/Hassene66/Campi-tn)
+![GitHub contributors](https://img.shields.io/github/contributors/Marwen46/Projet-symfony)
 ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 </div>
@@ -60,7 +60,7 @@ From your command line:
 $ git clone https://github.com/Marwen46/Projet-symfony
 
 # Go into the repository
-$ cd CProjet-symfony
+$ cd Projet-symfony
 
 # Install dependencies
 $ composer install
