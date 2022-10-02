@@ -33,7 +33,6 @@ Jobs for you is a job portal web app that aims to automate and improve the entir
   * Consult the new job applications of candidates (different informations, CV, ect).
   * Validate or decline the applications.
   * Create an interview appointment for candidates considered for the interview.
-  * 
 - For candidates : 
   * Create a new application.
   * update his informations.
